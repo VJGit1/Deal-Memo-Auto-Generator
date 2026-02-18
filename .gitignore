@@ -1,0 +1,12 @@
+# API Keys and Secrets
+.env
+
+# Cursor-specific ignore (optional but recommended)
+.cursor/
+.cursorignore
+
+# Python virtual environments
+__pycache__/
+!data/raw/.gitkeep
+venv/
+.DS_Store

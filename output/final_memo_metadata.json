@@ -1,0 +1,138 @@
+{
+  "output_type": "memo",
+  "company_name": "Department of Labor",
+  "sections": [
+    {
+      "title": "Executive Summary",
+      "content": "This report presents the findings and recommendations from the Tax Performance System (TPS) review of the UI Revenue (Tax) Operations, completed on April 30, 1996. The document is divided into two sections. Section I, the Executive Summary, provides general background information regarding the review, a summary of major findings, conclusions, and recommendations. This section also includes Computed Measures indicators for the past three years and a Program Review Findings Chart.\n\nThe TPS review assessed the quality of the UI Tax Operation in each of its major tax functions using two primary methodologies: Computed Measures and Program Reviews. Computed Measures involved compiling specific indicators for Status Determinations, Report Delinquency, Collections, and Field Audit to assess timeliness and completeness. Program Reviews encompassed Systems Reviews, which examined the internal controls and quality assurance systems of each tax function, and Acceptance Samples, which confirmed the effective operation of these systems.\n\nA problem area identified results in inequity for the majority of the employer community who pay payroll taxes timely. Recommendations to address this include the immediate use of black #2 pencils in all units preparing reports for computer scanning, instructing first-level supervisors to include a cursory review of the size and darkness of marks on reports, and clarifying written procedures to specify complete darkening of blocks and the correct pencil use. Furthermore, it is recommended to modify computer programming so that if the computer cannot \"see\" a mark on the block line, it will post the report to \"error suspense\" for follow-up.",
+      "citations": [
+        {
+          "doc": "sample.pdf",
+          "page": 1
+        },
+        {
+          "doc": "sample.pdf",
+          "page": 17
+        },
+        {
+          "doc": "sample.pdf",
+          "page": 5
+        },
+        {
+          "doc": "sample.pdf",
+          "page": 6
+        },
+        {
+          "doc": "sample.pdf",
+          "page": 25
+        }
+      ],
+      "confidence_score": 0.95,
+      "financial_evidence": []
+    },
+    {
+      "title": "Key Financials",
+      "content": "**Key Financials**\n\nThe provided excerpts include several operational percentages and indicators for the years 1993, 1994, and 1995. For \"Contr.\", the percentages were 1.4%, 1.3%, and 1.3% respectively, while for \"Reimb.\", they were 1.7%, 0.6%, and 1.6% for the same years. Additionally, Indicator 3 details the percent of tax due declared uncollectible. For \"Contr.\", these percentages were 0.5% in 1993, 0.8% in 1994, and 0.6% in 1995. For \"Reimb.\", the uncollectible percentages were 0.2% in 1993, 0.1% in 1994, and 0.5% in 1995.\n\nFurther data includes the percent of Status Determinations of newly measured established accounts made within 90 days from the last day of the quarter in which the account first became liable. This metric showed 80.3% in 1993, 80.6% in 1994, and 81.2% in 1995. The systems review section also notes \"Employer Tax Rates\" with all controls verified as present ('C') and acceptance samples confirming accuracy of outputs and effectiveness of controls ('Y').\n\nThe available excerpts primarily provide operational performance indicators and percentages related to tax collection and account management. They do not contain traditional financial statement data such as revenue, profit, assets, liabilities, or cash flow figures.",
+      "citations": [
+        {
+          "doc": "sample.pdf",
+          "page": 1
+        },
+        {
+          "doc": "sample.pdf",
+          "page": 18
+        },
+        {
+          "doc": "sample.pdf",
+          "page": 17
+        },
+        {
+          "doc": "sample.pdf",
+          "page": 14
+        },
+        {
+          "doc": "sample.pdf",
+          "page": 12
+        }
+      ],
+      "confidence_score": 0.95,
+      "financial_evidence": [
+        {
+          "metric_name": "Percent of Status Determinations of newly established accounts made within 90 days",
+          "value": "81.2%",
+          "fiscal_year": "1995",
+          "source_quote": "Indicator 1. Percent of Status Determinations of newly established accounts made within 90 days from the last day of the quarter in which the account first became liable: 1993 1994 1995 80.3% 80.6% 81.2%",
+          "page_number": 12,
+          "doc_name": "sample.pdf"
+        },
+        {
+          "metric_name": "Percent of Status Determinations of newly established accounts made within 90 days",
+          "value": "80.6%",
+          "fiscal_year": "1994",
+          "source_quote": "Indicator 1. Percent of Status Determinations of newly established accounts made within 90 days from the last day of the quarter in which the account first became liable: 1993 1994 1995 80.3% 80.6% 81.2%",
+          "page_number": 12,
+          "doc_name": "sample.pdf"
+        },
+        {
+          "metric_name": "Percent of Status Determinations of newly established accounts made within 90 days",
+          "value": "80.3%",
+          "fiscal_year": "1993",
+          "source_quote": "Indicator 1. Percent of Status Determinations of newly established accounts made within 90 days from the last day of the quarter in which the account first became liable: 1993 1994 1995 80.3% 80.6% 81.2%",
+          "page_number": 12,
+          "doc_name": "sample.pdf"
+        },
+        {
+          "metric_name": "Percent of Status Determination of newly established accounts made within 180 days",
+          "value": "99.3%",
+          "fiscal_year": "1995",
+          "source_quote": "Indicator 2. Percent of Status Determination of newly established accounts made within 180 days from the last day of the quarter in which the account first became liable: 1993 1994 1995 98.2% 98.7% 99.3%",
+          "page_number": 13,
+          "doc_name": "sample.pdf"
+        },
+        {
+          "metric_name": "Percent of Status Determinations of Successor accounts made within 90 days",
+          "value": "89.3%",
+          "fiscal_year": "1995",
+          "source_quote": "Indicator 3. Percent of Status Determinations of Successor accounts made within 90 days from the last day of the quarter in which the account first became liable as a Successor: 1993 1994 1995 85.6 87.3% 89.3%",
+          "page_number": 13,
+          "doc_name": "sample.pdf"
+        },
+        {
+          "metric_name": "Percent of Status Determinations of Successor accounts made within 180 days",
+          "value": "99.7%",
+          "fiscal_year": "1995",
+          "source_quote": "Indicator 4. Percent of Status Determinations of Successor accounts made within 180 days from the last day of the quarter in which the account first became liable as a Successor: 1993 1994 1995 89.6 99.7% 99.7%",
+          "page_number": 13,
+          "doc_name": "sample.pdf"
+        }
+      ]
+    }
+  ],
+  "flags": [],
+  "evidence_appendix": [
+    {
+      "doc": "sample.pdf",
+      "page": 12,
+      "metric": "Percent of Status Determinations of newly established accounts made within 90 days",
+      "quote": "Indicator 1. Percent of Status Determinations of newly established accounts made within 90 days from the last day of the quarter in which the account first became liable: 1993 1994 1995 80.3% 80.6% 81..."
+    },
+    {
+      "doc": "sample.pdf",
+      "page": 13,
+      "metric": "Percent of Status Determination of newly established accounts made within 180 days",
+      "quote": "Indicator 2. Percent of Status Determination of newly established accounts made within 180 days from the last day of the quarter in which the account first became liable: 1993 1994 1995 98.2% 98.7% 99..."
+    },
+    {
+      "doc": "sample.pdf",
+      "page": 13,
+      "metric": "Percent of Status Determinations of Successor accounts made within 90 days",
+      "quote": "Indicator 3. Percent of Status Determinations of Successor accounts made within 90 days from the last day of the quarter in which the account first became liable as a Successor: 1993 1994 1995 85.6 87..."
+    },
+    {
+      "doc": "sample.pdf",
+      "page": 13,
+      "metric": "Percent of Status Determinations of Successor accounts made within 180 days",
+      "quote": "Indicator 4. Percent of Status Determinations of Successor accounts made within 180 days from the last day of the quarter in which the account first became liable as a Successor: 1993 1994 1995 89.6 9..."
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+# DMAG - Deal Memo Auto Generator
+pydantic>=2.0
+pdfplumber>=0.10
+python-docx>=1.0
+docxtpl>=0.16
+python-dotenv>=1.0
+google-genai>=1.0
+pandas>=2.0
+openpyxl>=3.1
