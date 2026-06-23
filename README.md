@@ -33,27 +33,51 @@ Reduces memo drafting from hours to minutes. Citations ensure all numbers trace 
 ## Structure
 
 ```
-src/
-  app.py        # Orchestrator (~100 lines)
-  config.py     # Paths, constants
-  models.py     # DocChunk
-  ingest.py     # Ingestor class
-  chunker.py    # Chunker class
-  synthesis.py  # TemplateMapper, Synthesizer
-  financial.py  # FinancialExtractor, Reconciler
-  exporter.py   # Exporter
-  web_enrichment.py  # Stub for LinkedIn/G2 (optional)
-  schema.py     # Pydantic schemas
-
-data/raw/       # Place DD documents here
-templates/      # memo_template.docx
-output/         # final_memo.docx, final_memo_metadata.json
+frontend/       # React + Vite UI
+backend/
+  api/
+    main.py     # FastAPI routes
+    jobs.py     # Background pipeline jobs
+  src/
+    app.py      # CLI orchestrator
+    pipeline.py # Shared 8-step pipeline
+    config.py   # Paths, constants
+    ingest.py   # Ingestor class
+    chunker.py  # Chunker class
+    synthesis.py
+    financial.py
+    exporter.py
+    schema.py
+  data/raw/     # Place DD documents here (CLI mode)
+  templates/    # memo_template.docx
+  output/       # final_memo.docx, final_memo_metadata.json
 ```
 
 ## Run
 
+Add `GEMINI_API_KEY` to `.env` at the **repo root**.
+
+**Backend** (terminal 1):
+
 ```bash
+cd backend      # Windows
 pip install -r requirements.txt
-# Add GEMINI_API_KEY to .env
+uvicorn api.main:app --reload --port 8000
+```
+
+**Frontend** (terminal 2):
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Open http://localhost:5173. The Vite dev server proxies `/api` to the backend on port 8000.
+
+**Optional CLI** (batch mode, reads from `backend/data/raw/`):
+
+```bash
+cd backend
 python src/app.py
 ```

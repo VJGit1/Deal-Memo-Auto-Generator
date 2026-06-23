@@ -7,8 +7,15 @@ Primary User: Associate / Analyst
 
 from pathlib import Path
 
-# Paths
+from dotenv import load_dotenv
+
+# Paths (backend/ directory)
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
+REPO_ROOT = PROJECT_ROOT.parent
+
+load_dotenv(REPO_ROOT / ".env")
+load_dotenv(PROJECT_ROOT / ".env")
+
 RAW_DIR = PROJECT_ROOT / "data" / "raw"
 TEMPLATE_PATH = PROJECT_ROOT / "templates" / "memo_template.docx"
 OUTPUT_DIR = PROJECT_ROOT / "output"
