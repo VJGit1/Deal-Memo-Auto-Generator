@@ -371,6 +371,75 @@ body {
   margin: 0.15rem;
 }
 
+.claim-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin: 0.5rem 0 0.75rem;
+}
+
+.claim-chip {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  border-radius: 6px;
+  padding: 0.35rem 0.55rem;
+  font-size: 0.78rem;
+  line-height: 1.4;
+  cursor: help;
+  border: 1px solid transparent;
+}
+
+.claim-chip-status {
+  flex-shrink: 0;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  padding-top: 0.05rem;
+}
+
+.claim-chip-text {
+  color: var(--text);
+}
+
+.claim-supported {
+  background: rgba(34, 197, 94, 0.1);
+  border-color: rgba(34, 197, 94, 0.35);
+}
+
+.claim-supported .claim-chip-status {
+  color: var(--green);
+}
+
+.claim-unsupported {
+  background: rgba(239, 68, 68, 0.1);
+  border-color: rgba(239, 68, 68, 0.4);
+}
+
+.claim-unsupported .claim-chip-status {
+  color: var(--red);
+}
+
+.claim-contradicted {
+  background: rgba(249, 115, 22, 0.12);
+  border-color: rgba(249, 115, 22, 0.45);
+}
+
+.claim-contradicted .claim-chip-status {
+  color: #f97316;
+}
+
+.claim-insufficient {
+  background: rgba(148, 163, 184, 0.12);
+  border-color: rgba(148, 163, 184, 0.35);
+}
+
+.claim-insufficient .claim-chip-status {
+  color: var(--muted);
+}
+
 /* Flag cards */
 .flag-card {
   background: rgba(239, 68, 68, 0.08);
@@ -394,6 +463,203 @@ body {
   padding: 1rem 1.25rem;
   margin-bottom: 1.5rem;
   color: var(--amber);
+}
+
+.hitl-banner-ok {
+  background: linear-gradient(90deg, rgba(34, 197, 94, 0.12), rgba(212, 175, 55, 0.08));
+  border-color: var(--green);
+  color: var(--green);
+}
+
+.section-card-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+  margin-bottom: 0.75rem;
+}
+
+.section-needs-review {
+  border-color: rgba(245, 158, 11, 0.45);
+}
+
+.section-approved {
+  border-color: rgba(34, 197, 94, 0.35);
+}
+
+.ribbon-approved {
+  background: rgba(34, 197, 94, 0.15);
+  color: var(--green);
+  border: 1px solid var(--green);
+}
+
+.field-label {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin: 0.5rem 0 0.35rem;
+  font-family: "JetBrains Mono", monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.section-textarea {
+  width: 100%;
+  box-sizing: border-box;
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 8px;
+  padding: 0.75rem;
+  font-family: inherit;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  resize: vertical;
+  min-height: 8rem;
+}
+
+.section-textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+}
+
+.claim-edit-list {
+  margin: 0.75rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.claim-edit-row {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.claim-edit-input {
+  width: 100%;
+  box-sizing: border-box;
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  border-radius: 6px;
+  padding: 0.4rem 0.55rem;
+  font-size: 0.82rem;
+}
+
+.claim-edit-input:focus {
+  outline: none;
+  border-color: rgba(212, 175, 55, 0.5);
+}
+
+.hitl-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.hitl-btn {
+  background: var(--surface);
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  color: var(--text);
+  padding: 0.45rem 0.85rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.85rem;
+}
+
+.hitl-btn:hover:not(:disabled) {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.hitl-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.hitl-btn-primary {
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.25), rgba(212, 175, 55, 0.1));
+  border-color: rgba(212, 175, 55, 0.55);
+  color: var(--gold);
+  font-weight: 600;
+}
+
+.hitl-btn-amber {
+  border-color: var(--amber);
+  color: var(--amber);
+}
+
+.override-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.5rem;
+  margin-top: 0.65rem;
+}
+
+.override-input {
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  border-radius: 6px;
+  padding: 0.45rem 0.6rem;
+  font-size: 0.82rem;
+}
+
+.hitl-inline-error {
+  color: var(--red);
+  font-size: 0.8rem;
+  margin: 0.5rem 0 0;
+}
+
+.citation-row {
+  margin-top: 0.75rem;
+}
+
+.export-version-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.export-version-badge {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.95rem;
+  color: var(--gold);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  border-radius: 6px;
+  padding: 0.35rem 0.75rem;
+  background: rgba(212, 175, 55, 0.1);
+}
+
+.export-link-disabled {
+  flex: 1;
+  text-align: center;
+  background: rgba(148, 163, 184, 0.12);
+  color: var(--muted);
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 1px dashed rgba(148, 163, 184, 0.35);
+}
+
+.export-history {
+  margin-top: 1.25rem;
+}
+
+.export-history ul {
+  margin: 0.35rem 0 0;
+  padding-left: 1.1rem;
+  color: var(--text);
+  font-size: 0.85rem;
+}
+
+.export-history li {
+  margin-bottom: 0.35rem;
 }
 
 /* Financial table */

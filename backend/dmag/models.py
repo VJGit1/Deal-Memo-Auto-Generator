@@ -15,3 +15,4 @@ class DocChunk:
     doc_name: str
     page: int
     chunk_id: str
+    is_table: bool = False

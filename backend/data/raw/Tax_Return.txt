@@ -1,0 +1,14 @@
+Acme Robotics, Inc. — Tax return excerpt (FY2024)
+
+Taxpayer: Acme Robotics, Inc.
+EIN: 12-3456789
+Tax year ending: December 31, 2024
+
+Form excerpt — selected line items
+Gross receipts or sales (FY2024): $48,400,000
+Cost of goods sold: $21,200,000
+Taxable income before NOL: $1,850,000
+
+Note from tax advisor
+Reported gross receipts for FY2024 are $48.4 million. This figure is prepared
+on a tax basis and may differ from management reporting used in the CIM.

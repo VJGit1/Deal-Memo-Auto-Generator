@@ -1,6 +1,10 @@
 # API Keys and Secrets
 .env
 
+# demo files
+backend/*.egg-info/
+output/
+
 # Cursor-specific ignore (optional but recommended)
 .cursor/
 .cursorignore
@@ -9,7 +13,9 @@
 __pycache__/
 !backend/data/raw/.gitkeep
 venv/
+.venv/
 backend/venv/
+backend/.venv/
 node_modules/
 frontend/dist/
 .DS_Store

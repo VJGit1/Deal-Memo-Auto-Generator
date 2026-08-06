@@ -2,11 +2,17 @@ import { motion } from "framer-motion";
 import type { PipelineStats } from "../types";
 
 export function MetricCards({ stats }: { stats: PipelineStats }) {
+  const claimRate =
+    stats.supported_claim_rate != null
+      ? `${(stats.supported_claim_rate * 100).toFixed(0)}%`
+      : "—";
+
   const items = [
     { label: "Documents", value: stats.doc_count },
     { label: "Chunks Indexed", value: stats.chunk_count },
     { label: "Sections", value: stats.section_count },
     { label: "Flags", value: stats.flag_count },
+    { label: "Supported Claims", value: claimRate },
   ];
 
   return (

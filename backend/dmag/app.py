@@ -1,11 +1,12 @@
 """
 DMAG - Deal Memo Auto Generator (CLI)
 
-Run from backend/: python src/app.py
+Run from backend/: python -m dmag.app
+(or after pip install -e .: dmag)
 """
 
-from config import CONFIDENCE_THRESHOLD, OUTPUT_DIR, RAW_DIR, TEMPLATE_PATH
-from pipeline import run_pipeline
+from .config import CONFIDENCE_THRESHOLD, OUTPUT_DIR, RAW_DIR, TEMPLATE_PATH
+from .pipeline import run_pipeline
 
 
 def main() -> None:

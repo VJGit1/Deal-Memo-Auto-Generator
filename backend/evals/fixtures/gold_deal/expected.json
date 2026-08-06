@@ -1,0 +1,151 @@
+{
+  "company_name": "Acme Robotics",
+  "description": "Golden deal fixture for offline claim + reconciliation evals.",
+  "reconciliation_flags": [
+    "Revenue discrepancy (FY2024): CIM.txt, Tax_Return.txt"
+  ],
+  "financial_evidence": [
+    {
+      "metric_name": "Revenue",
+      "value": "52.9M",
+      "fiscal_year": "FY2024",
+      "source_quote": "Revenue FY2024: $52.9M",
+      "page_number": 1,
+      "doc_name": "CIM.txt"
+    },
+    {
+      "metric_name": "Revenue",
+      "value": "48.4M",
+      "fiscal_year": "FY2024",
+      "source_quote": "Reported gross receipts for FY2024 are $48.4 million.",
+      "page_number": 1,
+      "doc_name": "Tax_Return.txt"
+    },
+    {
+      "metric_name": "EBITDA",
+      "value": "6.2M",
+      "fiscal_year": "FY2024",
+      "source_quote": "EBITDA FY2024: $6.2M",
+      "page_number": 1,
+      "doc_name": "CIM.txt"
+    },
+    {
+      "metric_name": "ARR",
+      "value": "41.0M",
+      "fiscal_year": "FY2024",
+      "source_quote": "ARR exiting FY2024: $41.0M",
+      "page_number": 1,
+      "doc_name": "CIM.txt"
+    }
+  ],
+  "claims": [
+    {
+      "id": "c1",
+      "text": "Acme Robotics reported FY2024 revenue of $52.9M on the CIM.",
+      "citation_ids": ["e1"],
+      "status": "supported"
+    },
+    {
+      "id": "c2",
+      "text": "Acme Robotics had 186 active warehouse sites exiting FY2024.",
+      "citation_ids": ["e2"],
+      "status": "supported"
+    },
+    {
+      "id": "c3",
+      "text": "Tax filings report FY2024 gross receipts of $48.4 million.",
+      "citation_ids": ["e3"],
+      "status": "supported"
+    },
+    {
+      "id": "c4",
+      "text": "Acme Robotics holds a majority share of the global AMR market.",
+      "citation_ids": [],
+      "status": "insufficient"
+    }
+  ],
+  "evidence_chunks": [
+    {
+      "id": "e1",
+      "doc": "CIM.txt",
+      "page": 1,
+      "quote": "Revenue FY2024: $52.9M"
+    },
+    {
+      "id": "e2",
+      "doc": "CIM.txt",
+      "page": 1,
+      "quote": "Customers: 186 active warehouse sites"
+    },
+    {
+      "id": "e3",
+      "doc": "Tax_Return.txt",
+      "page": 1,
+      "quote": "Reported gross receipts for FY2024 are $48.4 million."
+    }
+  ],
+  "min_supported_claim_rate": 0.5,
+  "max_unsupported_claim_rate": 0.25,
+  "min_reconciliation_f1": 1.0,
+  "mock_memo": {
+    "output_type": "memo",
+    "company_name": "Acme Robotics",
+    "sections": [
+      {
+        "title": "Executive Summary",
+        "content": "Acme Robotics reported FY2024 revenue of $52.9M on the CIM. Acme Robotics had 186 active warehouse sites exiting FY2024. Tax filings report FY2024 gross receipts of $48.4 million. Acme Robotics holds a majority share of the global AMR market.",
+        "citations": [{"doc": "CIM.txt", "page": 1}, {"doc": "Tax_Return.txt", "page": 1}],
+        "confidence_score": 0.75,
+        "claims": [
+          {
+            "id": "c1",
+            "text": "Acme Robotics reported FY2024 revenue of $52.9M on the CIM.",
+            "citation_ids": ["e1"],
+            "status": "supported"
+          },
+          {
+            "id": "c2",
+            "text": "Acme Robotics had 186 active warehouse sites exiting FY2024.",
+            "citation_ids": ["e2"],
+            "status": "supported"
+          },
+          {
+            "id": "c3",
+            "text": "Tax filings report FY2024 gross receipts of $48.4 million.",
+            "citation_ids": ["e3"],
+            "status": "supported"
+          },
+          {
+            "id": "c4",
+            "text": "Acme Robotics holds a majority share of the global AMR market.",
+            "citation_ids": [],
+            "status": "insufficient"
+          }
+        ],
+        "evidence_chunks": [
+          {
+            "id": "e1",
+            "doc": "CIM.txt",
+            "page": 1,
+            "quote": "Revenue FY2024: $52.9M"
+          },
+          {
+            "id": "e2",
+            "doc": "CIM.txt",
+            "page": 1,
+            "quote": "Customers: 186 active warehouse sites"
+          },
+          {
+            "id": "e3",
+            "doc": "Tax_Return.txt",
+            "page": 1,
+            "quote": "Reported gross receipts for FY2024 are $48.4 million."
+          }
+        ]
+      }
+    ],
+    "flags": [
+      "Revenue discrepancy (FY2024): CIM.txt, Tax_Return.txt"
+    ]
+  }
+}
