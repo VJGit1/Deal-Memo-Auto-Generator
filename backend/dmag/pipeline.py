@@ -7,29 +7,28 @@ Shared by CLI (app.py) and FastAPI backend.
 from __future__ import annotations
 
 import json
-import os
 import time
 from collections.abc import Callable
 from dataclasses import dataclass, field
 from pathlib import Path
 
-from google import genai
-
-from config import (
+from .config import (
     API_DELAY_SEC,
     CONFIDENCE_THRESHOLD,
     GEMINI_MODEL,
     OUTPUT_DIR,
     RAW_DIR,
     TEMPLATE_PATH,
-    TOP_K_CHUNKS,
+    TOP_K,
 )
-from schema import MemoOutput, MemoSection
-from ingest import Ingestor
-from chunker import Chunker
-from synthesis import Synthesizer, TemplateMapper
-from financial import FinancialExtractor, Reconciler
-from exporter import Exporter
+from .gemini_client import generate_content, get_client
+from .schema import MemoOutput, MemoSection
+from .ingest import Ingestor
+from .chunker import Chunker
+from .agent_loop import AgentLoop
+from .synthesis import TemplateMapper
+from .financial import FinancialExtractor, Reconciler
+from .exporter import Exporter
 
 ProgressCallback = Callable[[int, int, str], None]
 
@@ -37,7 +36,7 @@ STEP_LABELS = [
     "Ingest & Parse",
     "Semantic Chunking",
     "Template Mapping",
-    "Agentic Synthesis",
+    "Grounded Synthesis",
     "Financial Auto-Fill",
     "Fact-Check & Reconcile",
     "Evidence Appendix",
@@ -56,6 +55,7 @@ class PipelineResult:
     chunk_count: int = 0
     section_count: int = 0
     flag_count: int = 0
+    supported_claim_rate: float = 0.0
     log: list[str] = field(default_factory=list)
 
 
@@ -71,6 +71,7 @@ def run_pipeline(
     on_progress: ProgressCallback | None = None,
     company_name_override: str | None = None,
     confidence_threshold: float | None = None,
+    job_id: str | None = None,
 ) -> PipelineResult:
     """
     Run the full 8-step DMAG pipeline.
@@ -83,7 +84,7 @@ def run_pipeline(
     threshold = confidence_threshold if confidence_threshold is not None else CONFIDENCE_THRESHOLD
     log: list[str] = []
 
-    client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
+    client = get_client()
 
     # Step 1: Ingest & Parse
     _notify(on_progress, 1, "Ingesting due diligence documents...")
@@ -95,9 +96,10 @@ def run_pipeline(
     log.append(msg)
     _notify(on_progress, 1, msg)
 
-    # Step 2: Semantic Chunking
-    _notify(on_progress, 2, "Building embedding index for RAG retrieval...")
-    chunker = Chunker(client)
+    # Step 2: Semantic Chunking + hybrid index (Chroma dense + BM25)
+    _notify(on_progress, 2, "Building hybrid embedding index for RAG retrieval...")
+    chroma_dir = Path(output_dir) / "chroma"
+    chunker = Chunker(client, persist_dir=chroma_dir)
     index = chunker.build_index(chunks)
     chunk_count = len(index)
     msg = f"Indexed {chunk_count} chunks"
@@ -112,16 +114,19 @@ def run_pipeline(
     log.append(msg)
     _notify(on_progress, 3, msg)
 
-    # Step 4: Agentic Synthesis
-    _notify(on_progress, 4, "Synthesizing memo sections from retrieved evidence...")
-    synthesizer = Synthesizer(client)
+    # Step 4: Grounded Synthesis (retrieve → generate → verify → re-retrieve)
+    _notify(on_progress, 4, "Grounded synthesis: retrieve, generate, verify claims...")
+    agent = AgentLoop(client, chunker)
     sections: list[MemoSection] = []
     for i, title in enumerate(headers):
-        _notify(on_progress, 4, f"Synthesizing section {i + 1}/{len(headers)}: {title}")
-        top = chunker.retrieve_top_k(title, top_k=TOP_K_CHUNKS)
-        sec = synthesizer.synthesize_section(title, top)
+        _notify(on_progress, 4, f"Grounding section {i + 1}/{len(headers)}: {title}")
+        sec = agent.run_section(title, top_k=TOP_K)
         sections.append(sec)
-    msg = f"Generated {len(sections)} memo sections"
+    supported_claim_rate = _aggregate_supported_claim_rate(sections)
+    msg = (
+        f"Generated {len(sections)} memo sections "
+        f"(supported claim rate: {supported_claim_rate:.0%})"
+    )
     log.append(msg)
     _notify(on_progress, 4, msg)
 
@@ -151,13 +156,16 @@ def run_pipeline(
             if len(dc.text) > 500:
                 try:
                     time.sleep(API_DELAY_SEC)
-                    r = client.models.generate_content(
+                    r = generate_content(
+                        client,
                         model=GEMINI_MODEL,
                         contents=(
                             f'Extract company name only. JSON: {{"company_name": "..."}}\n\n'
                             f"{dc.text[:3000]}"
                         ),
                         config={"temperature": 0, "response_mime_type": "application/json"},
+                        job_id=job_id,
+                        step="company_name",
                     )
                     data = json.loads(r.text or "{}")
                     company_name = data.get("company_name", company_name)
@@ -220,5 +228,21 @@ def run_pipeline(
         chunk_count=chunk_count,
         section_count=len(sections),
         flag_count=flag_count,
+        supported_claim_rate=supported_claim_rate,
         log=log,
     )
+
+
+def _aggregate_supported_claim_rate(sections: list[MemoSection]) -> float:
+    supported = 0
+    total = 0
+    for sec in sections:
+        if sec.verification_summary:
+            supported += sec.verification_summary.supported
+            total += sec.verification_summary.total_claims
+        else:
+            for c in sec.claims:
+                total += 1
+                if c.status == "supported":
+                    supported += 1
+    return supported / max(total, 1)

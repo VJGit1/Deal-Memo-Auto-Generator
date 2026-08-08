@@ -1,7 +1,7 @@
 """
-DMAG FastAPI backend — wraps src/pipeline.py for React frontend.
+DMAG FastAPI backend — wraps dmag.pipeline for React frontend.
 
-Dev run from backend/:
+Dev run (from backend/, after ``pip install -e .`` and Redis + RQ worker):
   uvicorn api.main:app --reload --port 8000
 Frontend: cd ../frontend && npm run dev
 """
@@ -10,25 +10,33 @@ from __future__ import annotations
 
 import asyncio
 import json
-import os
 import shutil
-import sys
 import tempfile
-import threading
 from pathlib import Path
 
-from fastapi import FastAPI, File, HTTPException, UploadFile
+from fastapi import FastAPI, File, HTTPException, Query, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from sse_starlette.sse import EventSourceResponse
 
-BACKEND_ROOT = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(BACKEND_ROOT / "src"))
+from dmag.gemini_client import configure_logging
 
-from config import TEMPLATE_PATH  # noqa: E402
-from pipeline import run_pipeline  # noqa: E402
+from api.jobs import (
+    ErrorCode,
+    create_job,
+    enqueue_pipeline,
+    gemini_key_present,
+    get_job,
+    redis_healthy,
+)
+from api.review import (
+    load_review_state,
+    resolve_download_path,
+    review_payload,
+    router as review_router,
+)
 
-from api.jobs import Job, create_job, get_job  # noqa: E402
+configure_logging()
 
 ALLOWED_EXTENSIONS = {".pdf", ".csv", ".xlsx", ".docx", ".txt"}
 
@@ -42,29 +50,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
-def _run_job(job: Job) -> None:
-    """Execute pipeline in background thread."""
-    job.set_running()
-    job.push_event(0, 8, "Pipeline started", "running")
-
-    def on_progress(step: int, total: int, message: str) -> None:
-        job.push_event(step, total, message, "running")
-
-    try:
-        if not os.getenv("GEMINI_API_KEY"):
-            raise RuntimeError("GEMINI_API_KEY not set in .env")
-
-        template = job.template_path if job.template_path and job.template_path.exists() else TEMPLATE_PATH
-        result = run_pipeline(
-            raw_dir=job.raw_dir,
-            template_path=template,
-            output_dir=job.output_dir,
-            on_progress=on_progress,
-        )
-        job.set_complete(result)
-    except Exception as exc:
-        job.set_error(str(exc))
+app.include_router(review_router)
 
 
 @app.post("/api/pipeline/run")
@@ -72,35 +58,54 @@ async def start_pipeline(
     files: list[UploadFile] = File(...),
     template: UploadFile | None = File(None),
 ) -> dict[str, str]:
-    """Upload DD files and start pipeline. Returns job_id."""
+    """Upload DD files and enqueue pipeline on RQ. Returns job_id."""
     if not files:
         raise HTTPException(status_code=400, detail="Upload at least one document.")
+
+    if not redis_healthy():
+        raise HTTPException(
+            status_code=503,
+            detail={"message": "Redis unavailable", "error_code": ErrorCode.REDIS_UNAVAILABLE.value},
+        )
 
     raw_dir = Path(tempfile.mkdtemp(prefix="dmag_api_raw_"))
     output_dir = Path(tempfile.mkdtemp(prefix="dmag_api_out_"))
     template_path: Path | None = None
 
     saved = 0
-    for uf in files:
-        ext = Path(uf.filename or "").suffix.lower()
-        if ext not in ALLOWED_EXTENSIONS:
-            continue
-        dest = raw_dir / (uf.filename or f"file{ext}")
-        dest.write_bytes(await uf.read())
-        saved += 1
+    try:
+        for uf in files:
+            ext = Path(uf.filename or "").suffix.lower()
+            if ext not in ALLOWED_EXTENSIONS:
+                continue
+            dest = raw_dir / (uf.filename or f"file{ext}")
+            dest.write_bytes(await uf.read())
+            saved += 1
 
-    if saved == 0:
+        if saved == 0:
+            raise HTTPException(
+                status_code=400,
+                detail={
+                    "message": "No valid file types uploaded.",
+                    "error_code": ErrorCode.INVALID_UPLOAD.value,
+                },
+            )
+
+        if template and template.filename:
+            template_path = raw_dir / "memo_template.docx"
+            template_path.write_bytes(await template.read())
+
+        job = create_job(raw_dir, output_dir, template_path)
+        enqueue_pipeline(job.job_id)
+        return {"job_id": job.job_id}
+    except HTTPException:
         shutil.rmtree(raw_dir, ignore_errors=True)
         shutil.rmtree(output_dir, ignore_errors=True)
-        raise HTTPException(status_code=400, detail="No valid file types uploaded.")
-
-    if template and template.filename:
-        template_path = raw_dir / "memo_template.docx"
-        template_path.write_bytes(await template.read())
-
-    job = create_job(raw_dir, output_dir, template_path)
-    threading.Thread(target=_run_job, args=(job,), daemon=True).start()
-    return {"job_id": job.job_id}
+        raise
+    except Exception as exc:
+        shutil.rmtree(raw_dir, ignore_errors=True)
+        shutil.rmtree(output_dir, ignore_errors=True)
+        raise HTTPException(status_code=500, detail=str(exc)) from exc
 
 
 @app.get("/api/pipeline/{job_id}/events")
@@ -110,29 +115,58 @@ async def pipeline_events(job_id: str) -> EventSourceResponse:
     async def event_generator():
         job = get_job(job_id)
         if not job:
-            yield {"event": "failed", "data": json.dumps({"message": "Job not found"})}
+            yield {
+                "event": "failed",
+                "data": json.dumps(
+                    {
+                        "message": "Job not found",
+                        "status": "error",
+                        "error_code": ErrorCode.JOB_NOT_FOUND.value,
+                    }
+                ),
+            }
             return
 
         last = 0
         while True:
-            with job.lock:
-                while last < len(job.events):
-                    evt = job.events[last]
-                    last += 1
-                    yield {"event": "progress", "data": json.dumps(evt)}
-
-                status = job.status
-
-            if status == "complete":
-                yield {
-                    "event": "complete",
-                    "data": json.dumps({"step": 8, "total": 8, "message": "Done", "status": "complete"}),
-                }
-                return
-            if status == "error":
+            job = get_job(job_id)
+            if not job:
                 yield {
                     "event": "failed",
-                    "data": json.dumps({"message": job.error or "Pipeline failed", "status": "error"}),
+                    "data": json.dumps(
+                        {
+                            "message": "Job expired or missing",
+                            "status": "error",
+                            "error_code": ErrorCode.JOB_NOT_FOUND.value,
+                        }
+                    ),
+                }
+                return
+
+            events = job.events
+            while last < len(events):
+                evt = events[last]
+                last += 1
+                yield {"event": "progress", "data": json.dumps(evt)}
+
+            if job.status == "complete":
+                yield {
+                    "event": "complete",
+                    "data": json.dumps(
+                        {"step": 8, "total": 8, "message": "Done", "status": "complete"}
+                    ),
+                }
+                return
+            if job.status == "error":
+                yield {
+                    "event": "failed",
+                    "data": json.dumps(
+                        {
+                            "message": job.error or "Pipeline failed",
+                            "status": "error",
+                            "error_code": job.error_code or ErrorCode.PIPELINE_ERROR.value,
+                        }
+                    ),
                 }
                 return
 
@@ -143,57 +177,91 @@ async def pipeline_events(job_id: str) -> EventSourceResponse:
 
 @app.get("/api/pipeline/{job_id}/result")
 async def pipeline_result(job_id: str) -> dict:
-    """MemoOutput JSON and download paths when job is complete."""
+    """MemoOutput JSON, HITL review fields, and download paths when job is complete."""
     job = get_job(job_id)
     if not job:
         raise HTTPException(status_code=404, detail="Job not found")
-    if job.status == "running" or job.status == "pending":
+    if job.status in ("running", "pending"):
         raise HTTPException(status_code=202, detail="Pipeline still running")
     if job.status == "error":
-        raise HTTPException(status_code=500, detail=job.error or "Pipeline failed")
+        raise HTTPException(
+            status_code=500,
+            detail={
+                "message": job.error or "Pipeline failed",
+                "error_code": job.error_code or ErrorCode.PIPELINE_ERROR.value,
+            },
+        )
     if not job.result:
         raise HTTPException(status_code=500, detail="No result available")
 
     result = job.result
+    state = load_review_state(job)
+    version = int(state.get("export_version", 0) or 0)
+    download_urls = {
+        "docx": f"/api/pipeline/{job_id}/download/docx",
+        "json": f"/api/pipeline/{job_id}/download/json",
+    }
+    if version > 0:
+        download_urls = {
+            "docx": f"/api/pipeline/{job_id}/download/docx?version={version}",
+            "json": f"/api/pipeline/{job_id}/download/json?version={version}",
+        }
     return {
         "job_id": job_id,
         "status": "complete",
-        "memo": result.memo.model_dump(),
-        "stats": {
-            "doc_count": result.doc_count,
-            "chunk_count": result.chunk_count,
-            "section_count": result.section_count,
-            "flag_count": result.flag_count,
-        },
-        "download_urls": {
-            "docx": f"/api/pipeline/{job_id}/download/docx",
-            "json": f"/api/pipeline/{job_id}/download/json",
-        },
+        "memo": result["memo"],
+        "stats": result["stats"],
+        "download_urls": download_urls,
+        **review_payload(job, state),
     }
 
 
 @app.get("/api/pipeline/{job_id}/download/docx")
-async def download_docx(job_id: str) -> FileResponse:
+async def download_docx(
+    job_id: str,
+    version: int | None = Query(default=None),
+) -> FileResponse:
     job = get_job(job_id)
     if not job or not job.result:
         raise HTTPException(status_code=404, detail="Job or file not found")
-    path = job.result.output_docx
+    path = resolve_download_path(job, "docx", version)
     if not path.exists():
         raise HTTPException(status_code=404, detail="DOCX not found")
-    return FileResponse(path, filename="final_memo.docx", media_type="application/vnd.openxmlformats-officedocument.wordprocessingml.document")
+    fname = path.name if path.name.startswith("final_memo_v") else "final_memo.docx"
+    return FileResponse(
+        path,
+        filename=fname,
+        media_type="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    )
 
 
 @app.get("/api/pipeline/{job_id}/download/json")
-async def download_json(job_id: str) -> FileResponse:
+async def download_json(
+    job_id: str,
+    version: int | None = Query(default=None),
+) -> FileResponse:
     job = get_job(job_id)
     if not job or not job.result:
         raise HTTPException(status_code=404, detail="Job or file not found")
-    path = job.result.output_json
+    path = resolve_download_path(job, "json", version)
     if not path.exists():
         raise HTTPException(status_code=404, detail="JSON not found")
-    return FileResponse(path, filename="final_memo_metadata.json", media_type="application/json")
+    fname = path.name if "final_memo_v" in path.name else "final_memo_metadata.json"
+    return FileResponse(
+        path,
+        filename=fname,
+        media_type="application/json",
+    )
 
 
 @app.get("/api/health")
-async def health() -> dict[str, str]:
-    return {"status": "ok"}
+async def health() -> dict:
+    """Liveness + dependency checks (Redis ping, GEMINI_API_KEY presence)."""
+    redis_ok = redis_healthy()
+    gemini_ok = gemini_key_present()
+    status = "ok" if redis_ok and gemini_ok else "degraded"
+    return {
+        "status": status,
+        "redis": "ok" if redis_ok else "unavailable",
+        "gemini_api_key": "present" if gemini_ok else "missing",
+    }

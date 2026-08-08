@@ -1,0 +1,71 @@
+{
+  "description": "Cassette of mocked Gemini JSON responses for offline eval smoke (no API key).",
+  "verify_batch": {
+    "verdicts": [
+      {
+        "claim_id": "c1",
+        "status": "supported",
+        "rationale": "Quote states Revenue FY2024: $52.9M"
+      },
+      {
+        "claim_id": "c2",
+        "status": "supported",
+        "rationale": "Quote states 186 active warehouse sites"
+      },
+      {
+        "claim_id": "c3",
+        "status": "supported",
+        "rationale": "Quote states $48.4 million gross receipts"
+      },
+      {
+        "claim_id": "c4",
+        "status": "insufficient",
+        "rationale": "No cited quotes"
+      }
+    ]
+  },
+  "extract_claims": {
+    "claims": [
+      {
+        "id": "c1",
+        "text": "Acme Robotics reported FY2024 revenue of $52.9M on the CIM.",
+        "citation_ids": ["e1"]
+      },
+      {
+        "id": "c2",
+        "text": "Acme Robotics had 186 active warehouse sites exiting FY2024.",
+        "citation_ids": ["e2"]
+      },
+      {
+        "id": "c3",
+        "text": "Tax filings report FY2024 gross receipts of $48.4 million.",
+        "citation_ids": ["e3"]
+      },
+      {
+        "id": "c4",
+        "text": "Acme Robotics holds a majority share of the global AMR market.",
+        "citation_ids": []
+      }
+    ]
+  },
+  "section_generation": {
+    "narrative": "Acme Robotics reported FY2024 revenue of $52.9M on the CIM. Acme Robotics had 186 active warehouse sites exiting FY2024. Tax filings report FY2024 gross receipts of $48.4 million.",
+    "claims": [
+      {
+        "id": "c1",
+        "text": "Acme Robotics reported FY2024 revenue of $52.9M on the CIM.",
+        "citation_ids": ["e1"]
+      },
+      {
+        "id": "c2",
+        "text": "Acme Robotics had 186 active warehouse sites exiting FY2024.",
+        "citation_ids": ["e2"]
+      },
+      {
+        "id": "c3",
+        "text": "Tax filings report FY2024 gross receipts of $48.4 million.",
+        "citation_ids": ["e3"]
+      }
+    ]
+  }
+}

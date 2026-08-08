@@ -5,9 +5,12 @@ Aligns with proposal: Evidence Gating, Accountability, Transparency.
 CRM-ready JSON output structure.
 """
 
-from typing import Annotated
+from typing import Annotated, Literal
 
 from pydantic import BaseModel, Field
+
+
+ClaimStatus = Literal["supported", "unsupported", "contradicted", "insufficient"]
 
 
 # --- Citation: maps to proposal format {doc, page} ---
@@ -16,6 +19,51 @@ class Citation(BaseModel):
 
     doc: Annotated[str, Field(description="Source document filename (e.g., 'Pitch_Deck.pdf').")]
     page: Annotated[int, Field(description="Page number (1-based).", ge=1)]
+
+
+# --- Claim-level grounding ---
+class Claim(BaseModel):
+    """Atomic factual claim with citation ids and verification status."""
+
+    id: Annotated[str, Field(description="Stable claim id within the section (e.g., 'c1').")]
+    text: Annotated[str, Field(description="Factual claim sentence.")]
+    citation_ids: Annotated[
+        list[str],
+        Field(
+            description="EvidenceChunk ids that support this claim.",
+            default_factory=list,
+        ),
+    ]
+    status: Annotated[
+        ClaimStatus,
+        Field(
+            description="Verification status against cited quotes only.",
+            default="insufficient",
+        ),
+    ]
+
+
+class EvidenceChunk(BaseModel):
+    """Retrieved excerpt used as a citation target for claims."""
+
+    id: Annotated[str, Field(description="Stable evidence id within the section (e.g., 'e1').")]
+    doc: Annotated[str, Field(description="Source document filename.")]
+    page: Annotated[int, Field(description="Page number (1-based).", ge=1)]
+    quote: Annotated[str, Field(description="Verbatim excerpt used for grounding.")]
+
+
+class VerificationSummary(BaseModel):
+    """Aggregate claim verification stats for a section."""
+
+    total_claims: Annotated[int, Field(description="Total claims in section.", ge=0, default=0)]
+    supported: Annotated[int, Field(ge=0, default=0)]
+    unsupported: Annotated[int, Field(ge=0, default=0)]
+    contradicted: Annotated[int, Field(ge=0, default=0)]
+    insufficient: Annotated[int, Field(ge=0, default=0)]
+    supported_claim_rate: Annotated[
+        float,
+        Field(description="supported / max(total_claims, 1).", ge=0.0, le=1.0, default=0.0),
+    ]
 
 
 # --- Financial evidence with full audit trail ---
@@ -61,7 +109,7 @@ class FinancialEvidence(BaseModel):
 
 # --- Memo section: proposal format ---
 class MemoSection(BaseModel):
-    """One section of the memo with content, citations, and confidence."""
+    """One section of the memo with content, citations, claims, and confidence."""
 
     title: Annotated[
         str,
@@ -83,7 +131,10 @@ class MemoSection(BaseModel):
     confidence_score: Annotated[
         float,
         Field(
-            description="Confidence 0.0–1.0. Sections below 0.7 require mandatory manual review.",
+            description=(
+                "Calibrated confidence: supported_claims / max(total_claims, 1). "
+                "Sections with unsupported/contradicted claims are capped below the review threshold."
+            ),
             ge=0.0,
             le=1.0,
         ),
@@ -94,6 +145,18 @@ class MemoSection(BaseModel):
             description="Financial metrics for this section with full audit trail.",
             default_factory=list,
         ),
+    ]
+    claims: Annotated[
+        list[Claim],
+        Field(description="Atomic claims with verification status.", default_factory=list),
+    ]
+    evidence_chunks: Annotated[
+        list[EvidenceChunk],
+        Field(description="Citation targets for claims in this section.", default_factory=list),
+    ]
+    verification_summary: Annotated[
+        VerificationSummary | None,
+        Field(description="Aggregate claim verification stats.", default=None),
     ]
 
 
@@ -139,3 +202,27 @@ class ExtractionResult(BaseModel):
         list[FinancialEvidence],
         Field(description="Financial metrics with source_quote and page_number.", default_factory=list),
     ]
+
+
+# --- Structured generation / grounding helpers ---
+class GeneratedClaim(BaseModel):
+    """LLM-produced claim before verification."""
+
+    id: str
+    text: str
+    citation_ids: list[str] = Field(default_factory=list)
+
+
+class SectionGeneration(BaseModel):
+    """Structured LLM output for a memo section."""
+
+    narrative: str
+    claims: list[GeneratedClaim] = Field(default_factory=list)
+
+
+class ClaimVerdict(BaseModel):
+    """LLM-as-judge verdict for one claim against cited quotes only."""
+
+    claim_id: str
+    status: ClaimStatus
+    rationale: str = ""
