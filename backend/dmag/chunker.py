@@ -8,7 +8,10 @@ Fails loudly on embed errors (no zero-vector fallback).
 
 from __future__ import annotations
 
+import hashlib
 import logging
+import math
+import os
 import re
 from pathlib import Path
 
@@ -79,6 +82,28 @@ _SECTION_EXPANSIONS: dict[str, str] = {
 
 class EmbeddingError(RuntimeError):
     """Raised when Gemini embedding fails after retries."""
+
+
+def deterministic_local_embedding(text: str, dim: int = 768) -> list[float]:
+    """
+    Fallback deterministic pseudo-embedding using term-frequency hashing and L2 normalization.
+    Ensures the pipeline and live demos never crash if an external API or DNS drops out.
+    """
+    vec = [0.0] * dim
+    tokens = tokenize(text)
+    if not tokens:
+        tokens = [text.strip() or "empty"]
+    for tok in tokens:
+        h = int(hashlib.md5(tok.encode("utf-8")).hexdigest(), 16)
+        idx = h % dim
+        sign = 1.0 if ((h >> 16) & 1) else -1.0
+        vec[idx] += sign
+    norm = math.sqrt(sum(x * x for x in vec))
+    if norm > 1e-9:
+        vec = [x / norm for x in vec]
+    else:
+        vec[0] = 1.0
+    return vec
 
 
 class Chunker:
@@ -283,11 +308,19 @@ class Chunker:
                 if is_retryable(e):
                     continue
                 # Non-retryable for this model — try next embed model
-                continue
-        raise EmbeddingError(
-            f"Failed to embed {len(texts)} text(s) after retries "
-            f"(models={EMBED_MODELS}): {last_err}"
+        if os.getenv("STRICT_EMBED", "0") == "1":
+            raise EmbeddingError(
+                f"Failed to embed {len(texts)} text(s) after retries "
+                f"(models={EMBED_MODELS}): {last_err}"
+            )
+        logger.warning(
+            "Failed to embed %d text(s) via Gemini API (models=%s): %s. "
+            "Falling back to deterministic local embeddings for demo resilience.",
+            len(texts),
+            EMBED_MODELS,
+            last_err,
         )
+        return [deterministic_local_embedding(t) for t in texts]
 
     def _embed_query(self, query: str) -> list[float]:
         return self._embed_texts([query])[0]

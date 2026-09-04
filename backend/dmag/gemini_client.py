@@ -34,6 +34,8 @@ def is_retryable(exc: BaseException) -> bool:
         return True
     if "500" in msg or "internal" in msg:
         return True
+    if "11001" in msg or "getaddrinfo" in msg or "connection" in msg or "network" in msg:
+        return True
     code = getattr(exc, "code", None) or getattr(exc, "status_code", None)
     return code in {408, 429, 500, 502, 503, 504}
 
