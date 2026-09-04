@@ -84,7 +84,7 @@ class Exporter:
                 "updated_at": review_state.get("updated_at"),
             }
 
-        with open(json_path, "w") as f:
+        with open(json_path, "w", encoding="utf-8") as f:
             json.dump(payload, f, indent=2, default=str)
 
         if version is not None and version > 0:
@@ -95,7 +95,7 @@ class Exporter:
             if docx_path.resolve() != draft_docx.resolve():
                 draft_docx.write_bytes(docx_path.read_bytes())
             if json_path.resolve() != draft_json.resolve():
-                draft_json.write_text(json_path.read_text())
+                draft_json.write_text(json_path.read_text(encoding="utf-8"), encoding="utf-8")
 
         print(f"Exported: {docx_path}, {json_path}")
         return {"docx": docx_path, "json": json_path}

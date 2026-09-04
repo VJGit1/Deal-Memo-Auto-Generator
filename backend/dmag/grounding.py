@@ -155,27 +155,28 @@ class GroundingService:
     def confidence_from_claims(self, claims: list[Claim]) -> float:
         """
         Calibrated confidence = supported / max(total, 1).
-        Sections with unsupported or contradicted claims are capped below threshold.
+        Sections with unsupported, contradicted, or insufficient claims are capped below threshold.
         """
         summary = self.build_summary(claims)
         rate = summary.supported_claim_rate
-        if summary.unsupported > 0 or summary.contradicted > 0:
+        if summary.unsupported > 0 or summary.contradicted > 0 or summary.insufficient > 0:
             rate = min(rate, CONFIDENCE_THRESHOLD - 0.01)
         if summary.total_claims == 0:
             return 0.3
         return max(0.0, min(1.0, rate))
 
     def bracket_unsupported(self, narrative: str, claims: list[Claim]) -> str:
-        """Bracket unsupported/contradicted claim text in the final narrative."""
+        """Bracket unsupported, contradicted, or insufficient claim text in the final narrative."""
         content = narrative
+        unverified_statuses = ("unsupported", "contradicted", "insufficient")
         for c in claims:
-            if c.status in ("unsupported", "contradicted") and c.text and c.text in content:
+            if c.status in unverified_statuses and c.text and c.text in content:
                 content = content.replace(c.text, f"[{c.text}]", 1)
         # Claims not found verbatim: append a short note if any remain unbracketed
         missing = [
             c
             for c in claims
-            if c.status in ("unsupported", "contradicted") and f"[{c.text}]" not in content
+            if c.status in unverified_statuses and f"[{c.text}]" not in content
         ]
         if missing:
             notes = "; ".join(c.text[:120] for c in missing[:5])

@@ -21,6 +21,8 @@ normalize = pytest.importorskip(
         ("52.9B", 52_900_000_000.0),
         ("$48,400,000", 48_400_000.0),
         ("(1.2M)", -1_200_000.0),
+        ("$(1.2M)", -1_200_000.0),
+        ("$(450K)", -450_000.0),
         # Percents stay in percentage points for like-for-like compare
         ("58%", 58.0),
         ("1,850,000", 1_850_000.0),
