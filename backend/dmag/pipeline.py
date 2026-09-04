@@ -140,10 +140,16 @@ def run_pipeline(
         text = "\n\n".join(dc.text for dc, _ in index if dc.doc_name == doc_name)
         all_evidence.extend(extractor.extract(text, doc_name))
 
+    fin_keywords = ("financial", "metric", "kpi", "figure", "performance", "historical", "accounting")
+    attached = False
     for sec in sections:
-        if "financial" in sec.title.lower() or "metric" in sec.title.lower():
+        if any(kw in sec.title.lower() for kw in fin_keywords):
             sec.financial_evidence = all_evidence
+            attached = True
             break
+
+    if not attached and sections and all_evidence:
+        sections[0].financial_evidence = all_evidence
 
     msg = f"Extracted {len(all_evidence)} financial evidence record(s)"
     log.append(msg)

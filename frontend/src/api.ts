@@ -57,6 +57,11 @@ export function subscribeToEvents(
     onError(data.message || "Pipeline failed");
   });
 
+  source.onerror = () => {
+    source.close();
+    onError("Connection to event stream lost. Check backend server and Redis.");
+  };
+
   return () => source.close();
 }
 

@@ -156,13 +156,16 @@ def parse_numeric_value(value: str | int | float) -> Optional[float]:
         return None
 
     negative = False
-    # Accounting negatives: (1.2M)
+    # Strip currency before checking parentheses: handles "$(1.2M)"
+    s = _CURRENCY_RE.sub("", s).strip()
+
+    # Accounting negatives: (1.2M) or ($1.2M)
     pm = _PARENS_RE.match(s)
     if pm:
         negative = True
         s = pm.group(1).strip()
+        s = _CURRENCY_RE.sub("", s).strip()
 
-    s = _CURRENCY_RE.sub("", s).strip()
     s = s.replace(",", "")
 
     is_percent = bool(_PERCENT_RE.search(s))

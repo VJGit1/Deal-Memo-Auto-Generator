@@ -47,13 +47,28 @@ class AgentLoop:
         5. Strip/bracket unsupported claims; calibrate confidence from claims
         """
         query = title
-        evidence: list[EvidenceChunk] = []
+        evidence_by_key: dict[tuple[str, int, str], EvidenceChunk] = {}
         generation: SectionGeneration | None = None
         claims = []
 
         for round_idx in range(self.max_rounds + 1):
             top = self.chunker.retrieve_top_k(query, top_k=top_k)
-            evidence = self._chunks_to_evidence(top)
+            new_chunks = self._chunks_to_evidence(top)
+            for ec in new_chunks:
+                key = (ec.doc, ec.page, ec.quote[:100])
+                if key not in evidence_by_key:
+                    evidence_by_key[key] = ec
+
+            evidence = [
+                EvidenceChunk(
+                    id=f"e{idx + 1}",
+                    doc=ec.doc,
+                    page=ec.page,
+                    quote=ec.quote,
+                )
+                for idx, ec in enumerate(evidence_by_key.values())
+            ]
+
             if not evidence:
                 return MemoSection(
                     title=title,

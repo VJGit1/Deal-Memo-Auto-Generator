@@ -117,7 +117,7 @@ def _build_initial_state(job: JobRecord) -> dict[str, Any]:
 def load_review_state(job: JobRecord) -> dict[str, Any]:
     path = _review_path(job)
     if path.exists():
-        data = json.loads(path.read_text())
+        data = json.loads(path.read_text(encoding="utf-8"))
     else:
         data = _build_initial_state(job)
 
@@ -139,7 +139,7 @@ def save_review_state(job: JobRecord, state: dict[str, Any]) -> None:
     state["updated_at"] = _utc_now()
     path = _review_path(job)
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(state, indent=2, default=str))
+    path.write_text(json.dumps(state, indent=2, default=str), encoding="utf-8")
 
 
 def seed_review_state(job_id: str) -> None:
@@ -219,7 +219,7 @@ def _persist_memo(job: JobRecord, memo: MemoOutput, *, supported_claim_rate: flo
 
     meta_path = Path(job.result["output_json"])  # type: ignore[index]
     meta_path.parent.mkdir(parents=True, exist_ok=True)
-    meta_path.write_text(json.dumps(memo.model_dump(), indent=2, default=str))
+    meta_path.write_text(json.dumps(memo.model_dump(), indent=2, default=str), encoding="utf-8")
 
 
 def _template_for(job: JobRecord) -> Path:
