@@ -67,6 +67,10 @@ _QUARTER_RE = re.compile(
     r"(?:([1-4])q\s*(?:fy\s*)?'?(\d{2}|\d{4}))|"
     r"(?:q([1-4])\s+(?:fy\s*)?(\d{2}|\d{4})))$"
 )
+_YEAR_QUARTER_RE = re.compile(
+    r"(?i)^(?:(?:fy\s*)?'?(\d{2}|\d{4})\s*[-_/]?\s*q([1-4])|"
+    r"(\d{4})\s*[-_/]?\s*q([1-4]))$"
+)
 _TTM_RE = re.compile(r"(?i)^(ttm|ltm|trailing\s+twelve\s+months)$")
 
 
@@ -132,6 +136,12 @@ def canonical_period(period: str) -> str:
     if m:
         q = m.group(1) or m.group(3) or m.group(5)
         y = m.group(2) or m.group(4) or m.group(6)
+        return f"Q{q}FY{_expand_year(y)}"
+
+    m = _YEAR_QUARTER_RE.match(compact) or _YEAR_QUARTER_RE.match(s)
+    if m:
+        y = m.group(1) or m.group(3)
+        q = m.group(2) or m.group(4)
         return f"Q{q}FY{_expand_year(y)}"
 
     # Soft fallback: uppercase, collapse spaces

@@ -174,8 +174,10 @@ def run_pipeline(
                         step="company_name",
                     )
                     data = json.loads(r.text or "{}")
-                    company_name = data.get("company_name", company_name)
-                    break
+                    extracted = (data.get("company_name") or "").strip()
+                    if extracted and extracted.lower() not in ("...", "unknown", "none"):
+                        company_name = extracted
+                        break
                 except Exception:
                     pass
 
