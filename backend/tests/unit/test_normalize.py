@@ -60,6 +60,10 @@ def test_canonical_metric(alias, canonical):
         ("FY2024", "FY2024"),
         ("TTM", "TTM"),
         ("Q1'24", "Q1FY2024"),
+        ("2024Q3", "Q3FY2024"),
+        ("2024 Q3", "Q3FY2024"),
+        ("FY24 Q3", "Q3FY2024"),
+        ("2024-Q3", "Q3FY2024"),
     ],
 )
 def test_canonical_period(raw, canonical):
