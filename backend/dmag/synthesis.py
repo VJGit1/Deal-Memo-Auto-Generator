@@ -20,17 +20,31 @@ class TemplateMapper:
         self.template_path = template_path
 
     def get_headers(self) -> list[str]:
+        default_headers = [
+            "Executive Summary",
+            "Market & Industry Overview",
+            "Business & Product Overview",
+            "Key Financial Metrics",
+            "Management & Organization",
+            "Key Risks & Diligence Findings",
+        ]
         if not self.template_path.exists():
-            return ["Executive Summary", "Key Financial Metrics", "Market Overview"]
+            return default_headers
 
         doc = Document(self.template_path)
-        skip = ("MEMORANDUM", "Company:", "Summary:", "Appendix")
+        skip = ("MEMORANDUM", "Company:", "Summary:", "Appendix", "Investment Memo:")
         headers = []
         for p in doc.paragraphs:
             t = p.text.strip()
-            if t and len(t) < 80 and "{{" not in t and not any(t.startswith(s) for s in skip):
+            if (
+                t
+                and len(t) < 80
+                and "{{" not in t
+                and not any(t.startswith(s) for s in skip)
+                and not t.lower().startswith("appendix")
+            ):
                 headers.append(t)
-        return headers[:6] if headers else ["Executive Summary", "Key Financial Metrics"]
+        return headers if headers else default_headers
 
 
 class Synthesizer:

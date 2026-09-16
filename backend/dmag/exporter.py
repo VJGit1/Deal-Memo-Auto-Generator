@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+import re
 from typing import Any
 
 from docx import Document
@@ -64,13 +65,32 @@ class Exporter:
         for s in memo.sections:
             all_evidence.extend(s.financial_evidence)
 
-        doc.render({
+        render_context: dict[str, Any] = {
             "COMPANY_NAME": memo.company_name,
             "SUMMARY_CONTENT": summary,
             "FINANCIAL_TABLE": self._format_table(all_evidence),
             "SECTIONS_CONTENT": self._format_sections(memo.sections),
             "APPENDIX_CONTENT": self._format_appendix(memo.evidence_appendix),
-        })
+            "sections": memo.sections,
+        }
+
+        # Populate per-section keys (e.g. SECTION_EXECUTIVE_SUMMARY, SECTION_MARKET_OVERVIEW)
+        for s in memo.sections:
+            raw_key = re.sub(r"[^A-Za-z0-9_]+", "_", s.title.strip().upper()).strip("_")
+            render_context[f"SECTION_{raw_key}"] = s.content
+            lowered = s.title.lower()
+            if "market" in lowered and "SECTION_MARKET_OVERVIEW" not in render_context:
+                render_context["SECTION_MARKET_OVERVIEW"] = s.content
+            if "business" in lowered and "SECTION_BUSINESS_OVERVIEW" not in render_context:
+                render_context["SECTION_BUSINESS_OVERVIEW"] = s.content
+            if "financial" in lowered and "SECTION_KEY_FINANCIAL_METRICS" not in render_context:
+                render_context["SECTION_KEY_FINANCIAL_METRICS"] = s.content
+            if "management" in lowered and "SECTION_MANAGEMENT_TEAM" not in render_context:
+                render_context["SECTION_MANAGEMENT_TEAM"] = s.content
+            if "risk" in lowered and "SECTION_RISKS" not in render_context:
+                render_context["SECTION_RISKS"] = s.content
+
+        doc.render(render_context)
         doc.save(docx_path)
 
         payload: dict[str, Any] = memo.model_dump()
@@ -105,11 +125,22 @@ class Exporter:
             return
         self.template_path.parent.mkdir(parents=True, exist_ok=True)
         doc = Document()
-        doc.add_paragraph("MEMORANDUM")
-        doc.add_paragraph("Company: {{ COMPANY_NAME }}")
-        doc.add_paragraph("Summary: {{ SUMMARY_CONTENT }}")
-        doc.add_paragraph("Financial Metrics: {{ FINANCIAL_TABLE }}")
-        doc.add_paragraph("Appendix: {{ APPENDIX_CONTENT }}")
+        doc.add_paragraph("MEMORANDUM: {{ COMPANY_NAME }}")
+        doc.add_paragraph("Executive Summary")
+        doc.add_paragraph("{{ SECTION_EXECUTIVE_SUMMARY }}")
+        doc.add_paragraph("Market & Industry Overview")
+        doc.add_paragraph("{{ SECTION_MARKET_OVERVIEW }}")
+        doc.add_paragraph("Business & Product Overview")
+        doc.add_paragraph("{{ SECTION_BUSINESS_OVERVIEW }}")
+        doc.add_paragraph("Key Financial Metrics")
+        doc.add_paragraph("{{ FINANCIAL_TABLE }}")
+        doc.add_paragraph("{{ SECTION_KEY_FINANCIAL_METRICS }}")
+        doc.add_paragraph("Management & Organization")
+        doc.add_paragraph("{{ SECTION_MANAGEMENT_TEAM }}")
+        doc.add_paragraph("Key Risks & Diligence Findings")
+        doc.add_paragraph("{{ SECTION_RISKS }}")
+        doc.add_paragraph("Appendix: Citations & Evidence")
+        doc.add_paragraph("{{ APPENDIX_CONTENT }}")
         doc.save(self.template_path)
 
     def _format_sections(self, sections: list[MemoSection]) -> str:
