@@ -19,14 +19,6 @@ flowchart TD
   hitl --> export[8. Versioned export<br/>Word .docx + Audit Appendix + JSON]
 ```
 
-| Layer | What it does |
-|---|---|
-| **Grounded Synthesis** | Per-section generation $\rightarrow$ atomic claim extraction $\rightarrow$ LLM-as-judge verification against verbatim cited quotes $\rightarrow$ self-repair re-retrieval on gaps ($\le 2$ rounds). Confidence = $\frac{\text{supported claims}}{\text{total claims}}$ (capped at 0.69 if unverified claims exist). |
-| **Hybrid Retrieval** | Dense embeddings (ChromaDB + `gemini-embedding-001`) + Sparse keyword search (BM25) over the same corpus; Reciprocal Rank Fusion (RRF, $k=60$). Built-in DNS-over-HTTPS (DoH) fallback for enterprise/campus firewalls. |
-| **Numeric Reconcile** | Normalizes currencies, multipliers, and fiscal periods; flags cross-document discrepancies with 1% relative tolerance formula $\frac{\|a - b\|}{\max(\|a\|, \|b\|)} > 0.01$. |
-| **Jobs & Streaming** | Redis + RQ background workers; Server-Sent Events (SSE) real-time progress stream; typed error codes on failure. |
-| **HITL Safety Gate** | Edit / re-verify / approve; final export locked until all sections meet the $\ge 0.70$ confidence threshold or are explicitly overridden with an audit rationale; versioned `final_memo_v{n}.docx`. |
-
 Package layout: installable `dmag` under `backend/dmag/`, FastAPI under `backend/api/`, React UI under `frontend/`.
 
 ---
