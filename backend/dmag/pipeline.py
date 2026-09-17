@@ -156,10 +156,12 @@ def run_pipeline(
     _notify(on_progress, 5, msg)
 
     # Company name
-    company_name = company_name_override or "Unknown"
-    if not company_name_override:
+    company_name = company_name_override or getattr(extractor, "company_name", "") or "Unknown"
+    if company_name in ("Unknown", "", "...") and not company_name_override:
+        checked = 0
         for dc, _ in index:
-            if len(dc.text) > 500:
+            if len(dc.text) > 300:
+                checked += 1
                 try:
                     time.sleep(API_DELAY_SEC)
                     r = generate_content(
@@ -180,6 +182,8 @@ def run_pipeline(
                         break
                 except Exception:
                     pass
+                if checked >= 2:
+                    break
 
     # Step 6: Fact-Check & Reconcile
     _notify(on_progress, 6, "Reconciling metrics across source documents...")

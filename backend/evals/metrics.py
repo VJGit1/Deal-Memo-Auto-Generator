@@ -200,12 +200,12 @@ class LatencyCostCounters:
         for e in self.events:
             lines.append(
                 f"[eval] {e['name']} latency_ms={e['latency_ms']:.1f} "
-                f"tokens={e['total_tokens']} cost_usd≈{e['approx_cost_usd']:.6f}"
+                f"tokens={e['total_tokens']} cost_usd~{e['approx_cost_usd']:.6f}"
             )
         s = self.summary()
         lines.append(
             f"[eval] TOTAL calls={s['calls']} latency_ms={s['total_latency_ms']:.1f} "
-            f"tokens={s['total_tokens']} cost_usd≈{s['approx_cost_usd']:.6f}"
+            f"tokens={s['total_tokens']} cost_usd~{s['approx_cost_usd']:.6f}"
         )
         return lines
 

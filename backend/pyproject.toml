@@ -36,6 +36,7 @@ dev = [
 
 [project.scripts]
 dmag = "dmag.app:main"
+dmag-worker = "api.worker:main"
 
 [tool.setuptools.packages.find]
 where = ["."]

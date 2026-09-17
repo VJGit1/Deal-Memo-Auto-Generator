@@ -1,138 +1,1192 @@
 {
   "output_type": "memo",
-  "company_name": "Department of Labor",
+  "company_name": "Acme Robotics, Inc.",
   "sections": [
     {
       "title": "Executive Summary",
-      "content": "This report presents the findings and recommendations from the Tax Performance System (TPS) review of the UI Revenue (Tax) Operations, completed on April 30, 1996. The document is divided into two sections. Section I, the Executive Summary, provides general background information regarding the review, a summary of major findings, conclusions, and recommendations. This section also includes Computed Measures indicators for the past three years and a Program Review Findings Chart.\n\nThe TPS review assessed the quality of the UI Tax Operation in each of its major tax functions using two primary methodologies: Computed Measures and Program Reviews. Computed Measures involved compiling specific indicators for Status Determinations, Report Delinquency, Collections, and Field Audit to assess timeliness and completeness. Program Reviews encompassed Systems Reviews, which examined the internal controls and quality assurance systems of each tax function, and Acceptance Samples, which confirmed the effective operation of these systems.\n\nA problem area identified results in inequity for the majority of the employer community who pay payroll taxes timely. Recommendations to address this include the immediate use of black #2 pencils in all units preparing reports for computer scanning, instructing first-level supervisors to include a cursory review of the size and darkness of marks on reports, and clarifying written procedures to specify complete darkening of blocks and the correct pencil use. Furthermore, it is recommended to modify computer programming so that if the computer cannot \"see\" a mark on the block line, it will post the report to \"error suspense\" for follow-up.",
+      "content": "Acme Robotics, Inc., headquartered in Austin, TX, operates in the industrial automation and warehouse robotics sector, designing and selling autonomous mobile robots (AMRs) for mid-market warehouses. As of December 31, 2024, the company employed 420 people and served 186 active warehouse sites. For FY2024, Acme Robotics reported $52.9M in revenue, up from $38.1M in FY2023, along with a 58% gross margin, $6.2M in EBITDA, and an exiting ARR of $41.0M. Management attributes this revenue growth to expansion with existing 3PL customers and two new enterprise logos signed in Q3 FY2024. The provided excerpts lack relevant information regarding other operational or tax performance system details.",
       "citations": [
         {
-          "doc": "sample.pdf",
+          "doc": "CIM.txt",
           "page": 1
-        },
-        {
-          "doc": "sample.pdf",
-          "page": 17
-        },
-        {
-          "doc": "sample.pdf",
-          "page": 5
-        },
-        {
-          "doc": "sample.pdf",
-          "page": 6
-        },
-        {
-          "doc": "sample.pdf",
-          "page": 25
         }
       ],
-      "confidence_score": 0.95,
-      "financial_evidence": []
+      "confidence_score": 1.0,
+      "financial_evidence": [],
+      "claims": [
+        {
+          "id": "c1",
+          "text": "Acme Robotics, Inc. is headquartered in Austin, TX and operates in the industrial automation / warehouse robotics sector, designing and selling autonomous mobile robots (AMRs) for mid-market warehouses.",
+          "citation_ids": [
+            "e1"
+          ],
+          "status": "supported"
+        },
+        {
+          "id": "c2",
+          "text": "The company had 420 employees and 186 active warehouse sites as of December 31, 2024.",
+          "citation_ids": [
+            "e1"
+          ],
+          "status": "supported"
+        },
+        {
+          "id": "c3",
+          "text": "Key financial metrics for FY2024 include $52.9M in revenue, 58% gross margin, $6.2M in EBITDA, and an exiting ARR of $41.0M, compared to $38.1M in revenue for FY2023.",
+          "citation_ids": [
+            "e1"
+          ],
+          "status": "supported"
+        },
+        {
+          "id": "c4",
+          "text": "Management attributes FY2024 revenue growth to expansion with existing 3PL customers and two new enterprise logos signed in Q3 FY2024.",
+          "citation_ids": [
+            "e1"
+          ],
+          "status": "supported"
+        }
+      ],
+      "evidence_chunks": [
+        {
+          "id": "e1",
+          "doc": "CIM.txt",
+          "page": 1,
+          "quote": "Acme Robotics \u2014 Confidential Information Memorandum (excerpt)\n\nCompany: Acme Robotics, Inc.\nHeadquarters: Austin, TX\nSector: Industrial automation / warehouse robotics\n\nBusiness overview\nAcme Robotics designs and sells autonomous mobile robots (AMRs) for mid-market\nwarehouses. The company has 420 employees as of December 31, 2024.\n\nKey financial metrics (management view)\nRevenue FY2024: $52.9M\nRevenue FY2023: $38.1M\nGross margin FY2024: 58%\nEBITDA FY2024: $6.2M\nARR exiting FY2024: $41.0M\nCustomers: 186 active warehouse sites\n\nGrowth commentary\nManagement attributes FY2024 revenue growth to expansion with existing 3PL\ncustomers and two new enterprise logos signed in Q3 FY2024."
+        },
+        {
+          "id": "e2",
+          "doc": "sample.pdf",
+          "page": 16,
+          "quote": "back-up training for employees in the Successor area.\n! Recording of Transaction and Events - Documentation is not beingmaintained to support that fact-finding procedures are being\nfollowed.\nD - 14 R 12/00"
+        },
+        {
+          "id": "e3",
+          "doc": "sample.pdf",
+          "page": 5,
+          "quote": "ET HANDBOOK NO. 407 APPENDIX D\nTAX PERFORMANCE SYSTEM\nANNUAL REPORT\nTHIS EXAMPLE SUGGESTS STYLE AND LANGUAGE. THE EXAMPLES OF COMPUTED MEASURES\nDO NOT REPRESENT DESIRED LEVELS OF ACHIEVEMENT.\nTPS ANNUAL REPORT FOR 1995\nSTATE XXX\nDATE\nThis Report consists of the findings and recommendations resulting from\nShow purpose and date review\nthe TPS review of the UI Revenue (Tax) Operations completed April 30,\nwas completed\n1996. The report is divided into two sections.\nSection I is an Executive Summary providing general background\ninformation regarding the review and a summary of the major findings,\nDescribe organization of report\nconclusions, and recommendations. Also included with this section are\nthe Computed Measures indicators for the past three years, and a\nProgram Review Findings Chart."
+        },
+        {
+          "id": "e4",
+          "doc": "sample.pdf",
+          "page": 16,
+          "quote": "atic review of\ncompleted Successor Determination work.\nThe Successor Determination Acceptance Sample passed 58 of the 60cases. (There is \"reasonable assurance of accuracy\" if two or fewer\nsamples fail sampling review.) The two failing cases contained no\nevidence or documentation that fact-finding investigations had been\nconducted. The SESA procedures require a thorough investigation\nbefore making a Successor Determination, and such fact-finding is\nrequired to be documented. In connection with this lack of documen\u00ad\ntation of fact-finding, Systems Review risks were identified in the\nfollowing categories:\n! Recorded instructions - Successor instructions in the operating\nmanual did not spell out current investigative fact-finding\nrequirements.\n! Training - No back-up training for employees in the Successor area.\n! Recording of Transaction and Events - Documentation is not being"
+        },
+        {
+          "id": "e5",
+          "doc": "sample.pdf",
+          "page": 14,
+          "quote": "ET HANDBOOK NO. 407 APPENDIX D\nTAX PERFORMANCE SYSTEM\nANNUAL REPORT\nNOTE: THIS SECTION OF APPENDIX D PROVIDES EXAMPLES OF\nFINDINGS FOR SOME BUT NOT ALL TAX FUNCTIONS.\nTAX PERFORMANCE SYSTEM\nANNUAL REPORT FOR 1995\nSECTION II\nFor each tax function, the DETAILED REPORT FOR EACH FUNCTION\nreport should be complete - it\nshould be able to stand alone\nSTATUS\nSynopsize findings up front, Findings from Computed Measures indicated that both New\nwith details to follow and Successor Status Determinations were completed in a\ntimely manner and have continued to improve. Reasonable\nAssurance of accuracy was found in all categories of Status\nDetermination and Posting \u2013 Newly established accounts,\nSuccessors and Inactivations/Terminations.\nComputed Measures Findings:"
+        }
+      ],
+      "verification_summary": {
+        "total_claims": 4,
+        "supported": 4,
+        "unsupported": 0,
+        "contradicted": 0,
+        "insufficient": 0,
+        "supported_claim_rate": 1.0
+      }
     },
     {
-      "title": "Key Financials",
-      "content": "**Key Financials**\n\nThe provided excerpts include several operational percentages and indicators for the years 1993, 1994, and 1995. For \"Contr.\", the percentages were 1.4%, 1.3%, and 1.3% respectively, while for \"Reimb.\", they were 1.7%, 0.6%, and 1.6% for the same years. Additionally, Indicator 3 details the percent of tax due declared uncollectible. For \"Contr.\", these percentages were 0.5% in 1993, 0.8% in 1994, and 0.6% in 1995. For \"Reimb.\", the uncollectible percentages were 0.2% in 1993, 0.1% in 1994, and 0.5% in 1995.\n\nFurther data includes the percent of Status Determinations of newly measured established accounts made within 90 days from the last day of the quarter in which the account first became liable. This metric showed 80.3% in 1993, 80.6% in 1994, and 81.2% in 1995. The systems review section also notes \"Employer Tax Rates\" with all controls verified as present ('C') and acceptance samples confirming accuracy of outputs and effectiveness of controls ('Y').\n\nThe available excerpts primarily provide operational performance indicators and percentages related to tax collection and account management. They do not contain traditional financial statement data such as revenue, profit, assets, liabilities, or cash flow figures.",
+      "title": "Market & Industry Overview",
+      "content": "Acme Robotics operates within the industrial automation and warehouse robotics sector, designing and selling autonomous mobile robots (AMRs) specifically for mid-market warehouses. The provided excerpts lack further relevant information regarding the broader market and industry overview.",
       "citations": [
         {
+          "doc": "CIM.txt",
+          "page": 1
+        }
+      ],
+      "confidence_score": 1.0,
+      "financial_evidence": [],
+      "claims": [
+        {
+          "id": "c1",
+          "text": "Acme Robotics operates in the industrial automation and warehouse robotics sector.",
+          "citation_ids": [
+            "e1"
+          ],
+          "status": "supported"
+        },
+        {
+          "id": "c2",
+          "text": "The company designs and sells autonomous mobile robots (AMRs) for mid-market warehouses.",
+          "citation_ids": [
+            "e1"
+          ],
+          "status": "supported"
+        }
+      ],
+      "evidence_chunks": [
+        {
+          "id": "e1",
+          "doc": "CIM.txt",
+          "page": 1,
+          "quote": "Acme Robotics \u2014 Confidential Information Memorandum (excerpt)\n\nCompany: Acme Robotics, Inc.\nHeadquarters: Austin, TX\nSector: Industrial automation / warehouse robotics\n\nBusiness overview\nAcme Robotics designs and sells autonomous mobile robots (AMRs) for mid-market\nwarehouses. The company has 420 employees as of December 31, 2024.\n\nKey financial metrics (management view)\nRevenue FY2024: $52.9M\nRevenue FY2023: $38.1M\nGross margin FY2024: 58%\nEBITDA FY2024: $6.2M\nARR exiting FY2024: $41.0M\nCustomers: 186 active warehouse sites\n\nGrowth commentary\nManagement attributes FY2024 revenue growth to expansion with existing 3PL\ncustomers and two new enterprise logos signed in Q3 FY2024."
+        },
+        {
+          "id": "e2",
+          "doc": "financials.csv",
+          "page": 1,
+          "quote": "metric | fiscal_year | value | source\nRevenue | FY2024 | 52900000.0 | CIM\nRevenue | FY2023 | 38100000.0 | CIM\nEBITDA | FY2024 | 6200000.0 | CIM\nARR | FY2024 | 41000000.0 | CIM\nGross Margin | FY2024 | 0.58 | CIM\nActive Sites | FY2024 | 186.0 | CIM"
+        },
+        {
+          "id": "e3",
           "doc": "sample.pdf",
+          "page": 25,
+          "quote": "eport and issue the billing previously\ndescribed.\nErroneous billings can cause: significant reductions in penalties thatshould be imposed; a slowdown of action against employers who\notherwise meet the criteria for immediate collection actions; inequity\nDescribe the effect of the for the vast majority of the employer community who pay payroll taxes\nproblem area timely.\nRecommendations:\n! Immediate use of black #2 pencils in all units preparing reports\nfor computer scanning.\n! Instruct first level supervisors to include a cursory review of the\nsize and darkness of the marks in this line on the report when\nreviewing staff's work for completeness and accuracy.\n! Clarify the written procedures to make it clear that the block\nmust be completely darkened and specify use of the correct pencil.\n! Modify programming of the computer so that if the computer can't"
+        },
+        {
+          "id": "e4",
+          "doc": "Meeting_Notes.txt",
+          "page": 1,
+          "quote": "Acme Robotics \u2014 Management meeting transcript (2025-01-15)\n\nAttendees: CFO (Jordan Lee), Associate (DD team)\n\nCFO: Exiting FY2024 we had about 186 active warehouse sites and ARR of roughly\nforty-one million.\n\nAssociate: And revenue for FY2024 on the CIM is fifty-two point nine million?\n\nCFO: Correct on the CIM management view. Tax filings show a lower gross receipts\nnumber because of revenue recognition timing differences.\n\nAssociate: Gross margin?\n\nCFO: Fifty-eight percent for FY2024. EBITDA was six point two million."
+        },
+        {
+          "id": "e5",
+          "doc": "sample.pdf",
+          "page": 23,
+          "quote": "titute a review system whereby all audits are equally subject\nto review and also review a greater number of those auditscompleted by auditors who have not yet exceeded a predeter\u00ad\nmined experience level or whose error rate exceeds a predeter\u00ad\nmined level.\n! Consider State X's process of utilizing peers to review the quality\nof completed field audits.\nIf other States have successful\nprocedures in place, consider\nnoting them as recommenda\u00ad\ntions.\nD - 21 R 12/00"
+        }
+      ],
+      "verification_summary": {
+        "total_claims": 2,
+        "supported": 2,
+        "unsupported": 0,
+        "contradicted": 0,
+        "insufficient": 0,
+        "supported_claim_rate": 1.0
+      }
+    },
+    {
+      "title": "Business & Product Overview",
+      "content": "Acme Robotics, Inc. is headquartered in Austin, TX, operating in the industrial automation and warehouse robotics sector. The company designs and sells autonomous mobile robots (AMRs) for mid-market warehouses and had 420 employees as of December 31, 2024. Management attributes FY2024 revenue growth to expansion with existing 3PL customers and two new enterprise logos signed in Q3 FY2024.\n\nFrom a financial perspective, management reported FY2024 revenue of $52.9M, compared to $38.1M in FY2023. Additional metrics for FY2024 include a gross margin of 58%, EBITDA of $6.2M, an exit ARR of $41.0M, and 186 active warehouse sites. Tax filings show a lower gross receipts number due to revenue recognition timing differences.",
+      "citations": [
+        {
+          "doc": "CIM.txt",
           "page": 1
         },
         {
-          "doc": "sample.pdf",
-          "page": 18
+          "doc": "Tax_Return.txt",
+          "page": 1
         },
         {
-          "doc": "sample.pdf",
-          "page": 17
+          "doc": "financials.csv",
+          "page": 1
         },
         {
-          "doc": "sample.pdf",
-          "page": 14
-        },
-        {
-          "doc": "sample.pdf",
-          "page": 12
+          "doc": "Meeting_Notes.txt",
+          "page": 1
         }
       ],
-      "confidence_score": 0.95,
+      "confidence_score": 1.0,
+      "financial_evidence": [],
+      "claims": [
+        {
+          "id": "c1",
+          "text": "Acme Robotics, Inc. is headquartered in Austin, TX and operates in the industrial automation and warehouse robotics sector.",
+          "citation_ids": [
+            "e1"
+          ],
+          "status": "supported"
+        },
+        {
+          "id": "c2",
+          "text": "The company designs and sells autonomous mobile robots (AMRs) for mid-market warehouses and had 420 employees as of December 31, 2024.",
+          "citation_ids": [
+            "e1"
+          ],
+          "status": "supported"
+        },
+        {
+          "id": "c3",
+          "text": "Management attributes FY2024 revenue growth to expansion with existing 3PL customers and two new enterprise logos signed in Q3 FY2024.",
+          "citation_ids": [
+            "e1"
+          ],
+          "status": "supported"
+        },
+        {
+          "id": "c4",
+          "text": "FY2024 revenue was $52.9M and FY2023 revenue was $38.1M.",
+          "citation_ids": [
+            "e1",
+            "e2",
+            "e3"
+          ],
+          "status": "supported"
+        },
+        {
+          "id": "c5",
+          "text": "FY2024 gross margin was 58%, EBITDA was $6.2M, ARR exiting FY2024 was $41.0M, and active warehouse sites totaled 186.",
+          "citation_ids": [
+            "e1",
+            "e2",
+            "e3"
+          ],
+          "status": "supported"
+        },
+        {
+          "id": "c6",
+          "text": "Tax filings show a lower gross receipts number because of revenue recognition timing differences.",
+          "citation_ids": [
+            "e2",
+            "e4"
+          ],
+          "status": "supported"
+        }
+      ],
+      "evidence_chunks": [
+        {
+          "id": "e1",
+          "doc": "CIM.txt",
+          "page": 1,
+          "quote": "Acme Robotics \u2014 Confidential Information Memorandum (excerpt)\n\nCompany: Acme Robotics, Inc.\nHeadquarters: Austin, TX\nSector: Industrial automation / warehouse robotics\n\nBusiness overview\nAcme Robotics designs and sells autonomous mobile robots (AMRs) for mid-market\nwarehouses. The company has 420 employees as of December 31, 2024.\n\nKey financial metrics (management view)\nRevenue FY2024: $52.9M\nRevenue FY2023: $38.1M\nGross margin FY2024: 58%\nEBITDA FY2024: $6.2M\nARR exiting FY2024: $41.0M\nCustomers: 186 active warehouse sites\n\nGrowth commentary\nManagement attributes FY2024 revenue growth to expansion with existing 3PL\ncustomers and two new enterprise logos signed in Q3 FY2024."
+        },
+        {
+          "id": "e2",
+          "doc": "Meeting_Notes.txt",
+          "page": 1,
+          "quote": "Acme Robotics \u2014 Management meeting transcript (2025-01-15)\n\nAttendees: CFO (Jordan Lee), Associate (DD team)\n\nCFO: Exiting FY2024 we had about 186 active warehouse sites and ARR of roughly\nforty-one million.\n\nAssociate: And revenue for FY2024 on the CIM is fifty-two point nine million?\n\nCFO: Correct on the CIM management view. Tax filings show a lower gross receipts\nnumber because of revenue recognition timing differences.\n\nAssociate: Gross margin?\n\nCFO: Fifty-eight percent for FY2024. EBITDA was six point two million."
+        },
+        {
+          "id": "e3",
+          "doc": "financials.csv",
+          "page": 1,
+          "quote": "metric | fiscal_year | value | source\nRevenue | FY2024 | 52900000.0 | CIM\nRevenue | FY2023 | 38100000.0 | CIM\nEBITDA | FY2024 | 6200000.0 | CIM\nARR | FY2024 | 41000000.0 | CIM\nGross Margin | FY2024 | 0.58 | CIM\nActive Sites | FY2024 | 186.0 | CIM"
+        },
+        {
+          "id": "e4",
+          "doc": "Tax_Return.txt",
+          "page": 1,
+          "quote": "Acme Robotics, Inc. \u2014 Tax return excerpt (FY2024)\n\nTaxpayer: Acme Robotics, Inc.\nEIN: 12-3456789\nTax year ending: December 31, 2024\n\nForm excerpt \u2014 selected line items\nGross receipts or sales (FY2024): $48,400,000\nCost of goods sold: $21,200,000\nTaxable income before NOL: $1,850,000\n\nNote from tax advisor\nReported gross receipts for FY2024 are $48.4 million. This figure is prepared\non a tax basis and may differ from management reporting used in the CIM."
+        },
+        {
+          "id": "e5",
+          "doc": "sample.pdf",
+          "page": 12,
+          "quote": " |  | Systems Review Verified Controls for: |  |  |  |  |  | Acceptance Sample\nOther |  | C | R | R |  | C | C | N\nACCOUNT MAINTENANCE |  |  |  |  |  |  |  | \nContribution Report Processing |  | C | C | C |  | C | C | Y\nEmployer Debits/Billings |  | C | C | C |  | C | C | Cont. N\n |  |  |  |  |  |  |  | Reim. Y\nEmployer Credits/Refunds |  | C | C | C |  | C | C | Y\nEmployer Charging |  | C | C | C |  | C | C | Y\nEmployer Tax Rates |  | C | C | C |  | C | C | Y"
+        }
+      ],
+      "verification_summary": {
+        "total_claims": 6,
+        "supported": 6,
+        "unsupported": 0,
+        "contradicted": 0,
+        "insufficient": 0,
+        "supported_claim_rate": 1.0
+      }
+    },
+    {
+      "title": "Key Financial Metrics",
+      "content": "According to the management view in the Confidential Information Memorandum, Acme Robotics reported FY2024 revenue of $52.9 million and FY2023 revenue of $38.1 million. The company achieved an EBITDA of $6.2 million, a gross margin of 58%, and an exiting ARR of $41.0 million for FY2024. Additionally, the company had 186 active warehouse sites exiting FY2024.\n\nTax filings present a different gross receipts figure of $48.4 million for FY2024, alongside a cost of goods sold of $21.2 million and a taxable income before NOL of $1.85 million. The tax advisor notes that the reported gross receipts are on a tax basis and differ from management reporting due to revenue recognition timing differences.",
+      "citations": [
+        {
+          "doc": "financials.csv",
+          "page": 1
+        },
+        {
+          "doc": "Tax_Return.txt",
+          "page": 1
+        },
+        {
+          "doc": "Meeting_Notes.txt",
+          "page": 1
+        },
+        {
+          "doc": "CIM.txt",
+          "page": 1
+        }
+      ],
+      "confidence_score": 1.0,
       "financial_evidence": [
         {
-          "metric_name": "Percent of Status Determinations of newly established accounts made within 90 days",
+          "metric_name": "Gross receipts or sales",
+          "value": "$48,400,000",
+          "fiscal_year": "2024",
+          "source_quote": "Gross receipts or sales (FY2024): $48,400,000",
+          "page_number": 1,
+          "doc_name": "Tax_Return.txt"
+        },
+        {
+          "metric_name": "Cost of goods sold",
+          "value": "$21,200,000",
+          "fiscal_year": "2024",
+          "source_quote": "Cost of goods sold: $21,200,000",
+          "page_number": 1,
+          "doc_name": "Tax_Return.txt"
+        },
+        {
+          "metric_name": "Taxable income before NOL",
+          "value": "$1,850,000",
+          "fiscal_year": "2024",
+          "source_quote": "Taxable income before NOL: $1,850,000",
+          "page_number": 1,
+          "doc_name": "Tax_Return.txt"
+        },
+        {
+          "metric_name": "Active warehouse sites",
+          "value": 186,
+          "fiscal_year": "FY2024",
+          "source_quote": "Exiting FY2024 we had about 186 active warehouse sites and ARR of roughly forty-one million.",
+          "page_number": 1,
+          "doc_name": "Meeting_Notes.txt"
+        },
+        {
+          "metric_name": "ARR",
+          "value": "forty-one million",
+          "fiscal_year": "FY2024",
+          "source_quote": "Exiting FY2024 we had about 186 active warehouse sites and ARR of roughly forty-one million.",
+          "page_number": 1,
+          "doc_name": "Meeting_Notes.txt"
+        },
+        {
+          "metric_name": "Revenue",
+          "value": "fifty-two point nine million",
+          "fiscal_year": "FY2024",
+          "source_quote": "Associate: And revenue for FY2024 on the CIM is fifty-two point nine million?",
+          "page_number": 1,
+          "doc_name": "Meeting_Notes.txt"
+        },
+        {
+          "metric_name": "Gross margin",
+          "value": "Fifty-eight percent",
+          "fiscal_year": "FY2024",
+          "source_quote": "CFO: Fifty-eight percent for FY2024.",
+          "page_number": 1,
+          "doc_name": "Meeting_Notes.txt"
+        },
+        {
+          "metric_name": "EBITDA",
+          "value": "six point two million",
+          "fiscal_year": "FY2024",
+          "source_quote": "EBITDA was six point two million.",
+          "page_number": 1,
+          "doc_name": "Meeting_Notes.txt"
+        },
+        {
+          "metric_name": "Revenue",
+          "value": "52900000.0",
+          "fiscal_year": "FY2024",
+          "source_quote": "Revenue | FY2024 | 52900000.0 | CIM",
+          "page_number": 1,
+          "doc_name": "financials.csv"
+        },
+        {
+          "metric_name": "Revenue",
+          "value": "38100000.0",
+          "fiscal_year": "FY2023",
+          "source_quote": "Revenue | FY2023 | 38100000.0 | CIM",
+          "page_number": 1,
+          "doc_name": "financials.csv"
+        },
+        {
+          "metric_name": "EBITDA",
+          "value": "6200000.0",
+          "fiscal_year": "FY2024",
+          "source_quote": "EBITDA | FY2024 | 6200000.0 | CIM",
+          "page_number": 1,
+          "doc_name": "financials.csv"
+        },
+        {
+          "metric_name": "ARR",
+          "value": "41000000.0",
+          "fiscal_year": "FY2024",
+          "source_quote": "ARR | FY2024 | 41000000.0 | CIM",
+          "page_number": 1,
+          "doc_name": "financials.csv"
+        },
+        {
+          "metric_name": "Gross Margin",
+          "value": "0.58",
+          "fiscal_year": "FY2024",
+          "source_quote": "Gross Margin | FY2024 | 0.58 | CIM",
+          "page_number": 1,
+          "doc_name": "financials.csv"
+        },
+        {
+          "metric_name": "Active Sites",
+          "value": "186.0",
+          "fiscal_year": "FY2024",
+          "source_quote": "Active Sites | FY2024 | 186.0 | CIM",
+          "page_number": 1,
+          "doc_name": "financials.csv"
+        },
+        {
+          "metric_name": "New Status determinations made within 90 days",
           "value": "81.2%",
           "fiscal_year": "1995",
-          "source_quote": "Indicator 1. Percent of Status Determinations of newly established accounts made within 90 days from the last day of the quarter in which the account first became liable: 1993 1994 1995 80.3% 80.6% 81.2%",
-          "page_number": 12,
+          "source_quote": "The percentages for New Status determinations were 81.2% made within 90 days and 99.3% in 180 days.",
+          "page_number": 5,
           "doc_name": "sample.pdf"
         },
         {
-          "metric_name": "Percent of Status Determinations of newly established accounts made within 90 days",
-          "value": "80.6%",
-          "fiscal_year": "1994",
-          "source_quote": "Indicator 1. Percent of Status Determinations of newly established accounts made within 90 days from the last day of the quarter in which the account first became liable: 1993 1994 1995 80.3% 80.6% 81.2%",
-          "page_number": 12,
-          "doc_name": "sample.pdf"
-        },
-        {
-          "metric_name": "Percent of Status Determinations of newly established accounts made within 90 days",
-          "value": "80.3%",
-          "fiscal_year": "1993",
-          "source_quote": "Indicator 1. Percent of Status Determinations of newly established accounts made within 90 days from the last day of the quarter in which the account first became liable: 1993 1994 1995 80.3% 80.6% 81.2%",
-          "page_number": 12,
-          "doc_name": "sample.pdf"
-        },
-        {
-          "metric_name": "Percent of Status Determination of newly established accounts made within 180 days",
+          "metric_name": "New Status determinations made within 180 days",
           "value": "99.3%",
           "fiscal_year": "1995",
-          "source_quote": "Indicator 2. Percent of Status Determination of newly established accounts made within 180 days from the last day of the quarter in which the account first became liable: 1993 1994 1995 98.2% 98.7% 99.3%",
-          "page_number": 13,
+          "source_quote": "The percentages for New Status determinations were 81.2% made within 90 days and 99.3% in 180 days.",
+          "page_number": 5,
           "doc_name": "sample.pdf"
         },
         {
-          "metric_name": "Percent of Status Determinations of Successor accounts made within 90 days",
+          "metric_name": "Successor Status determinations made within 90 days",
           "value": "89.3%",
           "fiscal_year": "1995",
-          "source_quote": "Indicator 3. Percent of Status Determinations of Successor accounts made within 90 days from the last day of the quarter in which the account first became liable as a Successor: 1993 1994 1995 85.6 87.3% 89.3%",
-          "page_number": 13,
+          "source_quote": "The percentages for Successor Status determinations were 89.3% made within 90 days and 99.7% in 180 days.",
+          "page_number": 5,
           "doc_name": "sample.pdf"
         },
         {
-          "metric_name": "Percent of Status Determinations of Successor accounts made within 180 days",
+          "metric_name": "Successor Status determinations made within 180 days",
           "value": "99.7%",
           "fiscal_year": "1995",
-          "source_quote": "Indicator 4. Percent of Status Determinations of Successor accounts made within 180 days from the last day of the quarter in which the account first became liable as a Successor: 1993 1994 1995 89.6 99.7% 99.7%",
-          "page_number": 13,
+          "source_quote": "The percentages for Successor Status determinations were 89.3% made within 90 days and 99.7% in 180 days.",
+          "page_number": 5,
           "doc_name": "sample.pdf"
+        },
+        {
+          "metric_name": "Contribution reports filed timely",
+          "value": "91.7%",
+          "fiscal_year": "1995",
+          "source_quote": "The State had 91.7% of the contribution reports filed timely; 94.1% of reports were secured by the end of the following quarter; and 99.1% of reports were secured or resolved within 180 days.",
+          "page_number": 6,
+          "doc_name": "sample.pdf"
+        },
+        {
+          "metric_name": "Reports secured by the end of the following quarter",
+          "value": "94.1%",
+          "fiscal_year": "1995",
+          "source_quote": "The State had 91.7% of the contribution reports filed timely; 94.1% of reports were secured by the end of the following quarter; and 99.1% of reports were secured or resolved within 180 days.",
+          "page_number": 6,
+          "doc_name": "sample.pdf"
+        },
+        {
+          "metric_name": "Reports secured or resolved within 180 days",
+          "value": "99.1%",
+          "fiscal_year": "1995",
+          "source_quote": "The State had 91.7% of the contribution reports filed timely; 94.1% of reports were secured by the end of the following quarter; and 99.1% of reports were secured or resolved within 180 days.",
+          "page_number": 6,
+          "doc_name": "sample.pdf"
+        },
+        {
+          "metric_name": "Percent of contributory employers making timely payments (Indicator 1)",
+          "value": "91.1%",
+          "fiscal_year": "1995",
+          "source_quote": "The percent of contributory employers making timely payments (Indicator 1) was 91.1%, the turnover of receivables (Indicator 2) was 1.3%, the percent declared uncollectible (Indicator 3) was 0.6%, and the percent of unpaid contributions/reimbursements due (Indicator 4) was 7.4%.",
+          "page_number": 6,
+          "doc_name": "sample.pdf"
+        },
+        {
+          "metric_name": "Revenue FY2024",
+          "value": "$52.9M",
+          "fiscal_year": "FY2024",
+          "source_quote": "Revenue FY2024: $52.9M",
+          "page_number": 1,
+          "doc_name": "CIM.txt"
+        },
+        {
+          "metric_name": "Revenue FY2023",
+          "value": "$38.1M",
+          "fiscal_year": "FY2023",
+          "source_quote": "Revenue FY2023: $38.1M",
+          "page_number": 1,
+          "doc_name": "CIM.txt"
+        },
+        {
+          "metric_name": "Gross margin FY2024",
+          "value": "58%",
+          "fiscal_year": "FY2024",
+          "source_quote": "Gross margin FY2024: 58%",
+          "page_number": 1,
+          "doc_name": "CIM.txt"
+        },
+        {
+          "metric_name": "EBITDA FY2024",
+          "value": "$6.2M",
+          "fiscal_year": "FY2024",
+          "source_quote": "EBITDA FY2024: $6.2M",
+          "page_number": 1,
+          "doc_name": "CIM.txt"
+        },
+        {
+          "metric_name": "ARR exiting FY2024",
+          "value": "$41.0M",
+          "fiscal_year": "FY2024",
+          "source_quote": "ARR exiting FY2024: $41.0M",
+          "page_number": 1,
+          "doc_name": "CIM.txt"
         }
-      ]
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "text": "Acme Robotics reported FY2024 revenue of $52.9 million and FY2023 revenue of $38.1 million.",
+          "citation_ids": [
+            "e1",
+            "e2",
+            "e3"
+          ],
+          "status": "supported"
+        },
+        {
+          "id": "c2",
+          "text": "FY2024 EBITDA was $6.2 million.",
+          "citation_ids": [
+            "e1",
+            "e2",
+            "e3"
+          ],
+          "status": "supported"
+        },
+        {
+          "id": "c3",
+          "text": "FY2024 gross margin was 58%.",
+          "citation_ids": [
+            "e1",
+            "e2",
+            "e3"
+          ],
+          "status": "supported"
+        },
+        {
+          "id": "c4",
+          "text": "Exiting FY2024 ARR was $41.0 million.",
+          "citation_ids": [
+            "e1",
+            "e2",
+            "e3"
+          ],
+          "status": "supported"
+        },
+        {
+          "id": "c5",
+          "text": "Active warehouse sites exiting FY2024 totaled 186.",
+          "citation_ids": [
+            "e1",
+            "e2",
+            "e3"
+          ],
+          "status": "supported"
+        },
+        {
+          "id": "c6",
+          "text": "Tax filings show FY2024 gross receipts of $48.4 million, cost of goods sold of $21.2 million, and taxable income before NOL of $1.85 million.",
+          "citation_ids": [
+            "e4"
+          ],
+          "status": "supported"
+        }
+      ],
+      "evidence_chunks": [
+        {
+          "id": "e1",
+          "doc": "financials.csv",
+          "page": 1,
+          "quote": "metric | fiscal_year | value | source\nRevenue | FY2024 | 52900000.0 | CIM\nRevenue | FY2023 | 38100000.0 | CIM\nEBITDA | FY2024 | 6200000.0 | CIM\nARR | FY2024 | 41000000.0 | CIM\nGross Margin | FY2024 | 0.58 | CIM\nActive Sites | FY2024 | 186.0 | CIM"
+        },
+        {
+          "id": "e2",
+          "doc": "CIM.txt",
+          "page": 1,
+          "quote": "Acme Robotics \u2014 Confidential Information Memorandum (excerpt)\n\nCompany: Acme Robotics, Inc.\nHeadquarters: Austin, TX\nSector: Industrial automation / warehouse robotics\n\nBusiness overview\nAcme Robotics designs and sells autonomous mobile robots (AMRs) for mid-market\nwarehouses. The company has 420 employees as of December 31, 2024.\n\nKey financial metrics (management view)\nRevenue FY2024: $52.9M\nRevenue FY2023: $38.1M\nGross margin FY2024: 58%\nEBITDA FY2024: $6.2M\nARR exiting FY2024: $41.0M\nCustomers: 186 active warehouse sites\n\nGrowth commentary\nManagement attributes FY2024 revenue growth to expansion with existing 3PL\ncustomers and two new enterprise logos signed in Q3 FY2024."
+        },
+        {
+          "id": "e3",
+          "doc": "Meeting_Notes.txt",
+          "page": 1,
+          "quote": "Acme Robotics \u2014 Management meeting transcript (2025-01-15)\n\nAttendees: CFO (Jordan Lee), Associate (DD team)\n\nCFO: Exiting FY2024 we had about 186 active warehouse sites and ARR of roughly\nforty-one million.\n\nAssociate: And revenue for FY2024 on the CIM is fifty-two point nine million?\n\nCFO: Correct on the CIM management view. Tax filings show a lower gross receipts\nnumber because of revenue recognition timing differences.\n\nAssociate: Gross margin?\n\nCFO: Fifty-eight percent for FY2024. EBITDA was six point two million."
+        },
+        {
+          "id": "e4",
+          "doc": "Tax_Return.txt",
+          "page": 1,
+          "quote": "Acme Robotics, Inc. \u2014 Tax return excerpt (FY2024)\n\nTaxpayer: Acme Robotics, Inc.\nEIN: 12-3456789\nTax year ending: December 31, 2024\n\nForm excerpt \u2014 selected line items\nGross receipts or sales (FY2024): $48,400,000\nCost of goods sold: $21,200,000\nTaxable income before NOL: $1,850,000\n\nNote from tax advisor\nReported gross receipts for FY2024 are $48.4 million. This figure is prepared\non a tax basis and may differ from management reporting used in the CIM."
+        },
+        {
+          "id": "e5",
+          "doc": "sample.pdf",
+          "page": 5,
+          "quote": "ET HANDBOOK NO. 407 APPENDIX D\nTAX PERFORMANCE SYSTEM\nANNUAL REPORT\nTHIS EXAMPLE SUGGESTS STYLE AND LANGUAGE. THE EXAMPLES OF COMPUTED MEASURES\nDO NOT REPRESENT DESIRED LEVELS OF ACHIEVEMENT.\nTPS ANNUAL REPORT FOR 1995\nSTATE XXX\nDATE\nThis Report consists of the findings and recommendations resulting from\nShow purpose and date review\nthe TPS review of the UI Revenue (Tax) Operations completed April 30,\nwas completed\n1996. The report is divided into two sections.\nSection I is an Executive Summary providing general background\ninformation regarding the review and a summary of the major findings,\nDescribe organization of report\nconclusions, and recommendations. Also included with this section are\nthe Computed Measures indicators for the past three years, and a\nProgram Review Findings Chart."
+        }
+      ],
+      "verification_summary": {
+        "total_claims": 6,
+        "supported": 6,
+        "unsupported": 0,
+        "contradicted": 0,
+        "insufficient": 0,
+        "supported_claim_rate": 1.0
+      }
+    },
+    {
+      "title": "Management & Organization",
+      "content": "Acme Robotics, Inc. is headquartered in Austin, TX, and operates in the industrial automation and warehouse robotics sector [e2]. As of December 31, 2024, the company employed 420 people [e2].",
+      "citations": [
+        {
+          "doc": "CIM.txt",
+          "page": 1
+        }
+      ],
+      "confidence_score": 1.0,
+      "financial_evidence": [],
+      "claims": [
+        {
+          "id": "c1",
+          "text": "Acme Robotics, Inc. is headquartered in Austin, TX.",
+          "citation_ids": [
+            "e2"
+          ],
+          "status": "supported"
+        },
+        {
+          "id": "c2",
+          "text": "The company operates in the industrial automation and warehouse robotics sector.",
+          "citation_ids": [
+            "e2"
+          ],
+          "status": "supported"
+        },
+        {
+          "id": "c3",
+          "text": "Acme Robotics had 420 employees as of December 31, 2024.",
+          "citation_ids": [
+            "e2"
+          ],
+          "status": "supported"
+        }
+      ],
+      "evidence_chunks": [
+        {
+          "id": "e1",
+          "doc": "Meeting_Notes.txt",
+          "page": 1,
+          "quote": "Acme Robotics \u2014 Management meeting transcript (2025-01-15)\n\nAttendees: CFO (Jordan Lee), Associate (DD team)\n\nCFO: Exiting FY2024 we had about 186 active warehouse sites and ARR of roughly\nforty-one million.\n\nAssociate: And revenue for FY2024 on the CIM is fifty-two point nine million?\n\nCFO: Correct on the CIM management view. Tax filings show a lower gross receipts\nnumber because of revenue recognition timing differences.\n\nAssociate: Gross margin?\n\nCFO: Fifty-eight percent for FY2024. EBITDA was six point two million."
+        },
+        {
+          "id": "e2",
+          "doc": "CIM.txt",
+          "page": 1,
+          "quote": "Acme Robotics \u2014 Confidential Information Memorandum (excerpt)\n\nCompany: Acme Robotics, Inc.\nHeadquarters: Austin, TX\nSector: Industrial automation / warehouse robotics\n\nBusiness overview\nAcme Robotics designs and sells autonomous mobile robots (AMRs) for mid-market\nwarehouses. The company has 420 employees as of December 31, 2024.\n\nKey financial metrics (management view)\nRevenue FY2024: $52.9M\nRevenue FY2023: $38.1M\nGross margin FY2024: 58%\nEBITDA FY2024: $6.2M\nARR exiting FY2024: $41.0M\nCustomers: 186 active warehouse sites\n\nGrowth commentary\nManagement attributes FY2024 revenue growth to expansion with existing 3PL\ncustomers and two new enterprise logos signed in Q3 FY2024."
+        },
+        {
+          "id": "e3",
+          "doc": "Tax_Return.txt",
+          "page": 1,
+          "quote": "Acme Robotics, Inc. \u2014 Tax return excerpt (FY2024)\n\nTaxpayer: Acme Robotics, Inc.\nEIN: 12-3456789\nTax year ending: December 31, 2024\n\nForm excerpt \u2014 selected line items\nGross receipts or sales (FY2024): $48,400,000\nCost of goods sold: $21,200,000\nTaxable income before NOL: $1,850,000\n\nNote from tax advisor\nReported gross receipts for FY2024 are $48.4 million. This figure is prepared\non a tax basis and may differ from management reporting used in the CIM."
+        },
+        {
+          "id": "e4",
+          "doc": "sample.pdf",
+          "page": 16,
+          "quote": "back-up training for employees in the Successor area.\n! Recording of Transaction and Events - Documentation is not beingmaintained to support that fact-finding procedures are being\nfollowed.\nD - 14 R 12/00"
+        },
+        {
+          "id": "e5",
+          "doc": "sample.pdf",
+          "page": 5,
+          "quote": "ET HANDBOOK NO. 407 APPENDIX D\nTAX PERFORMANCE SYSTEM\nANNUAL REPORT\nTHIS EXAMPLE SUGGESTS STYLE AND LANGUAGE. THE EXAMPLES OF COMPUTED MEASURES\nDO NOT REPRESENT DESIRED LEVELS OF ACHIEVEMENT.\nTPS ANNUAL REPORT FOR 1995\nSTATE XXX\nDATE\nThis Report consists of the findings and recommendations resulting from\nShow purpose and date review\nthe TPS review of the UI Revenue (Tax) Operations completed April 30,\nwas completed\n1996. The report is divided into two sections.\nSection I is an Executive Summary providing general background\ninformation regarding the review and a summary of the major findings,\nDescribe organization of report\nconclusions, and recommendations. Also included with this section are\nthe Computed Measures indicators for the past three years, and a\nProgram Review Findings Chart."
+        }
+      ],
+      "verification_summary": {
+        "total_claims": 3,
+        "supported": 3,
+        "unsupported": 0,
+        "contradicted": 0,
+        "insufficient": 0,
+        "supported_claim_rate": 1.0
+      }
+    },
+    {
+      "title": "Key Risks & Diligence Findings",
+      "content": "Diligence findings regarding administrative and operational procedures indicate several specific risks and process gaps. Specifically, regarding Successor Determinations, there is no systematic review of completed work currently being conducted, and reliance on a knowledgeable, long-time employee to overcome the lack of controls poses a risk if that individual becomes unavailable. Additionally, operating manual instructions did not spell out current investigative fact-finding requirements, there is no back-up training for employees in the Successor area, and documentation of transactions and events is lacking, with two failing acceptance sample cases containing no evidence or documentation that fact-finding investigations had been conducted. In the Employer Debits/Billings function, although Systems Review revealed no risks and indicated all internal controls were present, Acceptance Samples identified errors in billing employers properly, though contributing factors were subsequently identified and resolved.",
+      "citations": [
+        {
+          "doc": "sample.pdf",
+          "page": 9
+        },
+        {
+          "doc": "sample.pdf",
+          "page": 16
+        },
+        {
+          "doc": "sample.pdf",
+          "page": 17
+        }
+      ],
+      "confidence_score": 1.0,
+      "financial_evidence": [],
+      "claims": [
+        {
+          "id": "c1",
+          "text": "No systematic review of Successor Determinations is currently being conducted.",
+          "citation_ids": [
+            "e3"
+          ],
+          "status": "supported"
+        },
+        {
+          "id": "c2",
+          "text": "Complete reliance on the presence of long-time employees to overcome the lack of controls poses a risk because an employee could retire, become ill or otherwise become unavailable.",
+          "citation_ids": [
+            "e3"
+          ],
+          "status": "supported"
+        },
+        {
+          "id": "c3",
+          "text": "Successor instructions in the operating manual did not spell out current investigative fact-finding requirements.",
+          "citation_ids": [
+            "e5"
+          ],
+          "status": "supported"
+        },
+        {
+          "id": "c4",
+          "text": "There is no back-up training for employees in the Successor area.",
+          "citation_ids": [
+            "e5"
+          ],
+          "status": "supported"
+        },
+        {
+          "id": "c5",
+          "text": "Documentation is not being recorded properly for Successor Determinations, and two failing cases contained no evidence or documentation that fact-finding investigations had been conducted.",
+          "citation_ids": [
+            "e5"
+          ],
+          "status": "supported"
+        },
+        {
+          "id": "c6",
+          "text": "The Systems Review conducted for Employer Debits/Billings revealed no risks and indicated that all internal controls were present, but Acceptance Samples cases identified errors in billing employers properly.",
+          "citation_ids": [
+            "e4"
+          ],
+          "status": "supported"
+        },
+        {
+          "id": "c7",
+          "text": "Contributing factors for the Employer Debits/Billings errors were subsequently identified, and actions have been taken to resolve this problem.",
+          "citation_ids": [
+            "e4"
+          ],
+          "status": "supported"
+        }
+      ],
+      "evidence_chunks": [
+        {
+          "id": "e1",
+          "doc": "CIM.txt",
+          "page": 1,
+          "quote": "Acme Robotics \u2014 Confidential Information Memorandum (excerpt)\n\nCompany: Acme Robotics, Inc.\nHeadquarters: Austin, TX\nSector: Industrial automation / warehouse robotics\n\nBusiness overview\nAcme Robotics designs and sells autonomous mobile robots (AMRs) for mid-market\nwarehouses. The company has 420 employees as of December 31, 2024.\n\nKey financial metrics (management view)\nRevenue FY2024: $52.9M\nRevenue FY2023: $38.1M\nGross margin FY2024: 58%\nEBITDA FY2024: $6.2M\nARR exiting FY2024: $41.0M\nCustomers: 186 active warehouse sites\n\nGrowth commentary\nManagement attributes FY2024 revenue growth to expansion with existing 3PL\ncustomers and two new enterprise logos signed in Q3 FY2024."
+        },
+        {
+          "id": "e2",
+          "doc": "sample.pdf",
+          "page": 7,
+          "quote": "s Determinations were completed in a timely manner. The\npercentages for New Status determinations were 81.2% made within90 days and 99.3% in 180 days. The percentages for Successor\nStatus determinations were 89.3% made within 90 days and 99.7%\nin 180 days.\nCashiering\nReasonable assurance of quality was confirmed for the Cashiering\nfunction. The Systems Review verified the existence of the\nnecessary internal controls, and no risks were identified. The\nIf no risk was found, say so Acceptance Sample cases all passed, and the three verification tests\nalso passed, which validated the effectiveness of the internal\ncontrols.\nReport Delinquency\nReasonable assurance of quality was confirmed in this function.\nThe Program Review findings indicated that all internal controls\nwere present and operating effectively. The absence of risks in the\nSystems Review was consistent with no errors found in the"
+        },
+        {
+          "id": "e3",
+          "doc": "sample.pdf",
+          "page": 17,
+          "quote": "ET HANDBOOK NO. 407 APPENDIX D\nTAX PERFORMANCE SYSTEM\nANNUAL REPORT\nProgram Review Findings: (cont.)\n! Review of Completed Work - No systematic review of Successor\nDeterminations is currently being conducted.\nThe overall passing of the Successor Acceptance Sample when\nExplain any inconsistency risks were identified during the Systems Review seems to be\nbetween Systems Review and directly related to a knowledgeable, long-time employee who\nAcceptance Sample findings makes Successor Determinations; however, complete reliance\non the presence of long-time employees to overcome the lack\nof controls poses a risk because an employee could retire,\nbecome ill or otherwise become unavailable.\nWhen recommending Improvements are recommended in all the areas where risks"
+        },
+        {
+          "id": "e4",
+          "doc": "sample.pdf",
+          "page": 9,
+          "quote": "hese areas validated the\neffectiveness of those controls.\nThe Systems Review conducted for Employer Debits/Billings alsoIf an inconsistency exists revealed no risks, and indicated that all internal controls were\nbetween Systems Review and present; however, the Acceptance Samples cases identified errors in\nSampling, explain it billing employers properly. The contributing factors were\nsubsequently identified, and actions have been taken to resolve this\nproblem.\nD - 7 R 12/00"
+        },
+        {
+          "id": "e5",
+          "doc": "sample.pdf",
+          "page": 16,
+          "quote": "atic review of\ncompleted Successor Determination work.\nThe Successor Determination Acceptance Sample passed 58 of the 60cases. (There is \"reasonable assurance of accuracy\" if two or fewer\nsamples fail sampling review.) The two failing cases contained no\nevidence or documentation that fact-finding investigations had been\nconducted. The SESA procedures require a thorough investigation\nbefore making a Successor Determination, and such fact-finding is\nrequired to be documented. In connection with this lack of documen\u00ad\ntation of fact-finding, Systems Review risks were identified in the\nfollowing categories:\n! Recorded instructions - Successor instructions in the operating\nmanual did not spell out current investigative fact-finding\nrequirements.\n! Training - No back-up training for employees in the Successor area.\n! Recording of Transaction and Events - Documentation is not being"
+        }
+      ],
+      "verification_summary": {
+        "total_claims": 7,
+        "supported": 7,
+        "unsupported": 0,
+        "contradicted": 0,
+        "insufficient": 0,
+        "supported_claim_rate": 1.0
+      }
     }
   ],
-  "flags": [],
+  "flags": [
+    "Arr discrepancy (FY2024): Meeting_Notes.txt=forty-one million (unparseable) vs financials.csv=41000000.0 (norm=41M)",
+    "Revenue discrepancy (FY2024): Meeting_Notes.txt=fifty-two point nine million (unparseable) vs financials.csv=52900000.0 (norm=52.9M)",
+    "Gross Margin discrepancy (FY2024): Meeting_Notes.txt=Fifty-eight percent (unparseable) vs financials.csv=0.58 (norm=0.58)",
+    "Ebitda discrepancy (FY2024): Meeting_Notes.txt=six point two million (unparseable) vs financials.csv=6200000.0 (norm=6.2M)"
+  ],
   "evidence_appendix": [
     {
-      "doc": "sample.pdf",
-      "page": 12,
-      "metric": "Percent of Status Determinations of newly established accounts made within 90 days",
-      "quote": "Indicator 1. Percent of Status Determinations of newly established accounts made within 90 days from the last day of the quarter in which the account first became liable: 1993 1994 1995 80.3% 80.6% 81..."
+      "doc": "CIM.txt",
+      "page": 1,
+      "metric": "Executive Summary \u00b7 c1 [supported]",
+      "claim_id": "c1",
+      "claim_text": "Acme Robotics, Inc. is headquartered in Austin, TX and operates in the industrial automation / warehouse robotics sector, designing and selling autonomous mobile robots (AMRs) for mid-market warehouses.",
+      "claim_status": "supported",
+      "evidence_id": "e1",
+      "quote": "Acme Robotics \u2014 Confidential Information Memorandum (excerpt)\n\nCompany: Acme Robotics, Inc.\nHeadquarters: Austin, TX\nSector: Industrial automation / warehouse robotics\n\nBusiness overview\nAcme Robotics..."
+    },
+    {
+      "doc": "CIM.txt",
+      "page": 1,
+      "metric": "Executive Summary \u00b7 c2 [supported]",
+      "claim_id": "c2",
+      "claim_text": "The company had 420 employees and 186 active warehouse sites as of December 31, 2024.",
+      "claim_status": "supported",
+      "evidence_id": "e1",
+      "quote": "Acme Robotics \u2014 Confidential Information Memorandum (excerpt)\n\nCompany: Acme Robotics, Inc.\nHeadquarters: Austin, TX\nSector: Industrial automation / warehouse robotics\n\nBusiness overview\nAcme Robotics..."
+    },
+    {
+      "doc": "CIM.txt",
+      "page": 1,
+      "metric": "Executive Summary \u00b7 c3 [supported]",
+      "claim_id": "c3",
+      "claim_text": "Key financial metrics for FY2024 include $52.9M in revenue, 58% gross margin, $6.2M in EBITDA, and an exiting ARR of $41.0M, compared to $38.1M in revenue for FY2023.",
+      "claim_status": "supported",
+      "evidence_id": "e1",
+      "quote": "Acme Robotics \u2014 Confidential Information Memorandum (excerpt)\n\nCompany: Acme Robotics, Inc.\nHeadquarters: Austin, TX\nSector: Industrial automation / warehouse robotics\n\nBusiness overview\nAcme Robotics..."
+    },
+    {
+      "doc": "CIM.txt",
+      "page": 1,
+      "metric": "Executive Summary \u00b7 c4 [supported]",
+      "claim_id": "c4",
+      "claim_text": "Management attributes FY2024 revenue growth to expansion with existing 3PL customers and two new enterprise logos signed in Q3 FY2024.",
+      "claim_status": "supported",
+      "evidence_id": "e1",
+      "quote": "Acme Robotics \u2014 Confidential Information Memorandum (excerpt)\n\nCompany: Acme Robotics, Inc.\nHeadquarters: Austin, TX\nSector: Industrial automation / warehouse robotics\n\nBusiness overview\nAcme Robotics..."
+    },
+    {
+      "doc": "Meeting_Notes.txt",
+      "page": 1,
+      "metric": "Business & Product Overview \u00b7 c4 [supported]",
+      "claim_id": "c4",
+      "claim_text": "FY2024 revenue was $52.9M and FY2023 revenue was $38.1M.",
+      "claim_status": "supported",
+      "evidence_id": "e2",
+      "quote": "Acme Robotics \u2014 Management meeting transcript (2025-01-15)\n\nAttendees: CFO (Jordan Lee), Associate (DD team)\n\nCFO: Exiting FY2024 we had about 186 active warehouse sites and ARR of roughly\nforty-one m..."
+    },
+    {
+      "doc": "financials.csv",
+      "page": 1,
+      "metric": "Business & Product Overview \u00b7 c4 [supported]",
+      "claim_id": "c4",
+      "claim_text": "FY2024 revenue was $52.9M and FY2023 revenue was $38.1M.",
+      "claim_status": "supported",
+      "evidence_id": "e3",
+      "quote": "metric | fiscal_year | value | source\nRevenue | FY2024 | 52900000.0 | CIM\nRevenue | FY2023 | 38100000.0 | CIM\nEBITDA | FY2024 | 6200000.0 | CIM\nARR | FY2024 | 41000000.0 | CIM\nGross Margin | FY2024 | ..."
+    },
+    {
+      "doc": "CIM.txt",
+      "page": 1,
+      "metric": "Business & Product Overview \u00b7 c5 [supported]",
+      "claim_id": "c5",
+      "claim_text": "FY2024 gross margin was 58%, EBITDA was $6.2M, ARR exiting FY2024 was $41.0M, and active warehouse sites totaled 186.",
+      "claim_status": "supported",
+      "evidence_id": "e1",
+      "quote": "Acme Robotics \u2014 Confidential Information Memorandum (excerpt)\n\nCompany: Acme Robotics, Inc.\nHeadquarters: Austin, TX\nSector: Industrial automation / warehouse robotics\n\nBusiness overview\nAcme Robotics..."
+    },
+    {
+      "doc": "Meeting_Notes.txt",
+      "page": 1,
+      "metric": "Business & Product Overview \u00b7 c5 [supported]",
+      "claim_id": "c5",
+      "claim_text": "FY2024 gross margin was 58%, EBITDA was $6.2M, ARR exiting FY2024 was $41.0M, and active warehouse sites totaled 186.",
+      "claim_status": "supported",
+      "evidence_id": "e2",
+      "quote": "Acme Robotics \u2014 Management meeting transcript (2025-01-15)\n\nAttendees: CFO (Jordan Lee), Associate (DD team)\n\nCFO: Exiting FY2024 we had about 186 active warehouse sites and ARR of roughly\nforty-one m..."
+    },
+    {
+      "doc": "financials.csv",
+      "page": 1,
+      "metric": "Business & Product Overview \u00b7 c5 [supported]",
+      "claim_id": "c5",
+      "claim_text": "FY2024 gross margin was 58%, EBITDA was $6.2M, ARR exiting FY2024 was $41.0M, and active warehouse sites totaled 186.",
+      "claim_status": "supported",
+      "evidence_id": "e3",
+      "quote": "metric | fiscal_year | value | source\nRevenue | FY2024 | 52900000.0 | CIM\nRevenue | FY2023 | 38100000.0 | CIM\nEBITDA | FY2024 | 6200000.0 | CIM\nARR | FY2024 | 41000000.0 | CIM\nGross Margin | FY2024 | ..."
+    },
+    {
+      "doc": "Meeting_Notes.txt",
+      "page": 1,
+      "metric": "Business & Product Overview \u00b7 c6 [supported]",
+      "claim_id": "c6",
+      "claim_text": "Tax filings show a lower gross receipts number because of revenue recognition timing differences.",
+      "claim_status": "supported",
+      "evidence_id": "e2",
+      "quote": "Acme Robotics \u2014 Management meeting transcript (2025-01-15)\n\nAttendees: CFO (Jordan Lee), Associate (DD team)\n\nCFO: Exiting FY2024 we had about 186 active warehouse sites and ARR of roughly\nforty-one m..."
+    },
+    {
+      "doc": "Tax_Return.txt",
+      "page": 1,
+      "metric": "Business & Product Overview \u00b7 c6 [supported]",
+      "claim_id": "c6",
+      "claim_text": "Tax filings show a lower gross receipts number because of revenue recognition timing differences.",
+      "claim_status": "supported",
+      "evidence_id": "e4",
+      "quote": "Acme Robotics, Inc. \u2014 Tax return excerpt (FY2024)\n\nTaxpayer: Acme Robotics, Inc.\nEIN: 12-3456789\nTax year ending: December 31, 2024\n\nForm excerpt \u2014 selected line items\nGross receipts or sales (FY2024)..."
+    },
+    {
+      "doc": "CIM.txt",
+      "page": 1,
+      "metric": "Key Financial Metrics \u00b7 c1 [supported]",
+      "claim_id": "c1",
+      "claim_text": "Acme Robotics reported FY2024 revenue of $52.9 million and FY2023 revenue of $38.1 million.",
+      "claim_status": "supported",
+      "evidence_id": "e2",
+      "quote": "Acme Robotics \u2014 Confidential Information Memorandum (excerpt)\n\nCompany: Acme Robotics, Inc.\nHeadquarters: Austin, TX\nSector: Industrial automation / warehouse robotics\n\nBusiness overview\nAcme Robotics..."
+    },
+    {
+      "doc": "Meeting_Notes.txt",
+      "page": 1,
+      "metric": "Key Financial Metrics \u00b7 c1 [supported]",
+      "claim_id": "c1",
+      "claim_text": "Acme Robotics reported FY2024 revenue of $52.9 million and FY2023 revenue of $38.1 million.",
+      "claim_status": "supported",
+      "evidence_id": "e3",
+      "quote": "Acme Robotics \u2014 Management meeting transcript (2025-01-15)\n\nAttendees: CFO (Jordan Lee), Associate (DD team)\n\nCFO: Exiting FY2024 we had about 186 active warehouse sites and ARR of roughly\nforty-one m..."
+    },
+    {
+      "doc": "CIM.txt",
+      "page": 1,
+      "metric": "Key Financial Metrics \u00b7 c2 [supported]",
+      "claim_id": "c2",
+      "claim_text": "FY2024 EBITDA was $6.2 million.",
+      "claim_status": "supported",
+      "evidence_id": "e2",
+      "quote": "Acme Robotics \u2014 Confidential Information Memorandum (excerpt)\n\nCompany: Acme Robotics, Inc.\nHeadquarters: Austin, TX\nSector: Industrial automation / warehouse robotics\n\nBusiness overview\nAcme Robotics..."
+    },
+    {
+      "doc": "Meeting_Notes.txt",
+      "page": 1,
+      "metric": "Key Financial Metrics \u00b7 c2 [supported]",
+      "claim_id": "c2",
+      "claim_text": "FY2024 EBITDA was $6.2 million.",
+      "claim_status": "supported",
+      "evidence_id": "e3",
+      "quote": "Acme Robotics \u2014 Management meeting transcript (2025-01-15)\n\nAttendees: CFO (Jordan Lee), Associate (DD team)\n\nCFO: Exiting FY2024 we had about 186 active warehouse sites and ARR of roughly\nforty-one m..."
+    },
+    {
+      "doc": "CIM.txt",
+      "page": 1,
+      "metric": "Key Financial Metrics \u00b7 c3 [supported]",
+      "claim_id": "c3",
+      "claim_text": "FY2024 gross margin was 58%.",
+      "claim_status": "supported",
+      "evidence_id": "e2",
+      "quote": "Acme Robotics \u2014 Confidential Information Memorandum (excerpt)\n\nCompany: Acme Robotics, Inc.\nHeadquarters: Austin, TX\nSector: Industrial automation / warehouse robotics\n\nBusiness overview\nAcme Robotics..."
+    },
+    {
+      "doc": "Meeting_Notes.txt",
+      "page": 1,
+      "metric": "Key Financial Metrics \u00b7 c3 [supported]",
+      "claim_id": "c3",
+      "claim_text": "FY2024 gross margin was 58%.",
+      "claim_status": "supported",
+      "evidence_id": "e3",
+      "quote": "Acme Robotics \u2014 Management meeting transcript (2025-01-15)\n\nAttendees: CFO (Jordan Lee), Associate (DD team)\n\nCFO: Exiting FY2024 we had about 186 active warehouse sites and ARR of roughly\nforty-one m..."
+    },
+    {
+      "doc": "Tax_Return.txt",
+      "page": 1,
+      "metric": "Gross receipts or sales",
+      "quote": "Gross receipts or sales (FY2024): $48,400,000"
+    },
+    {
+      "doc": "Tax_Return.txt",
+      "page": 1,
+      "metric": "Cost of goods sold",
+      "quote": "Cost of goods sold: $21,200,000"
+    },
+    {
+      "doc": "Tax_Return.txt",
+      "page": 1,
+      "metric": "Taxable income before NOL",
+      "quote": "Taxable income before NOL: $1,850,000"
+    },
+    {
+      "doc": "Meeting_Notes.txt",
+      "page": 1,
+      "metric": "Active warehouse sites",
+      "quote": "Exiting FY2024 we had about 186 active warehouse sites and ARR of roughly forty-one million."
+    },
+    {
+      "doc": "Meeting_Notes.txt",
+      "page": 1,
+      "metric": "ARR",
+      "quote": "Exiting FY2024 we had about 186 active warehouse sites and ARR of roughly forty-one million."
+    },
+    {
+      "doc": "Meeting_Notes.txt",
+      "page": 1,
+      "metric": "Revenue",
+      "quote": "Associate: And revenue for FY2024 on the CIM is fifty-two point nine million?"
+    },
+    {
+      "doc": "Meeting_Notes.txt",
+      "page": 1,
+      "metric": "Gross margin",
+      "quote": "CFO: Fifty-eight percent for FY2024."
+    },
+    {
+      "doc": "Meeting_Notes.txt",
+      "page": 1,
+      "metric": "EBITDA",
+      "quote": "EBITDA was six point two million."
+    },
+    {
+      "doc": "financials.csv",
+      "page": 1,
+      "metric": "Revenue",
+      "quote": "Revenue | FY2024 | 52900000.0 | CIM"
+    },
+    {
+      "doc": "financials.csv",
+      "page": 1,
+      "metric": "EBITDA",
+      "quote": "EBITDA | FY2024 | 6200000.0 | CIM"
+    },
+    {
+      "doc": "financials.csv",
+      "page": 1,
+      "metric": "ARR",
+      "quote": "ARR | FY2024 | 41000000.0 | CIM"
+    },
+    {
+      "doc": "financials.csv",
+      "page": 1,
+      "metric": "Gross Margin",
+      "quote": "Gross Margin | FY2024 | 0.58 | CIM"
+    },
+    {
+      "doc": "financials.csv",
+      "page": 1,
+      "metric": "Active Sites",
+      "quote": "Active Sites | FY2024 | 186.0 | CIM"
     },
     {
       "doc": "sample.pdf",
-      "page": 13,
-      "metric": "Percent of Status Determination of newly established accounts made within 180 days",
-      "quote": "Indicator 2. Percent of Status Determination of newly established accounts made within 180 days from the last day of the quarter in which the account first became liable: 1993 1994 1995 98.2% 98.7% 99..."
+      "page": 5,
+      "metric": "New Status determinations made within 90 days",
+      "quote": "The percentages for New Status determinations were 81.2% made within 90 days and 99.3% in 180 days."
     },
     {
       "doc": "sample.pdf",
-      "page": 13,
-      "metric": "Percent of Status Determinations of Successor accounts made within 90 days",
-      "quote": "Indicator 3. Percent of Status Determinations of Successor accounts made within 90 days from the last day of the quarter in which the account first became liable as a Successor: 1993 1994 1995 85.6 87..."
+      "page": 5,
+      "metric": "New Status determinations made within 180 days",
+      "quote": "The percentages for New Status determinations were 81.2% made within 90 days and 99.3% in 180 days."
     },
     {
       "doc": "sample.pdf",
-      "page": 13,
-      "metric": "Percent of Status Determinations of Successor accounts made within 180 days",
-      "quote": "Indicator 4. Percent of Status Determinations of Successor accounts made within 180 days from the last day of the quarter in which the account first became liable as a Successor: 1993 1994 1995 89.6 9..."
+      "page": 5,
+      "metric": "Successor Status determinations made within 90 days",
+      "quote": "The percentages for Successor Status determinations were 89.3% made within 90 days and 99.7% in 180 days."
+    },
+    {
+      "doc": "sample.pdf",
+      "page": 5,
+      "metric": "Successor Status determinations made within 180 days",
+      "quote": "The percentages for Successor Status determinations were 89.3% made within 90 days and 99.7% in 180 days."
+    },
+    {
+      "doc": "sample.pdf",
+      "page": 6,
+      "metric": "Contribution reports filed timely",
+      "quote": "The State had 91.7% of the contribution reports filed timely; 94.1% of reports were secured by the end of the following quarter; and 99.1% of reports were secured or resolved within 180 days."
+    },
+    {
+      "doc": "sample.pdf",
+      "page": 6,
+      "metric": "Reports secured by the end of the following quarter",
+      "quote": "The State had 91.7% of the contribution reports filed timely; 94.1% of reports were secured by the end of the following quarter; and 99.1% of reports were secured or resolved within 180 days."
+    },
+    {
+      "doc": "sample.pdf",
+      "page": 6,
+      "metric": "Reports secured or resolved within 180 days",
+      "quote": "The State had 91.7% of the contribution reports filed timely; 94.1% of reports were secured by the end of the following quarter; and 99.1% of reports were secured or resolved within 180 days."
+    },
+    {
+      "doc": "sample.pdf",
+      "page": 6,
+      "metric": "Percent of contributory employers making timely payments (Indicator 1)",
+      "quote": "The percent of contributory employers making timely payments (Indicator 1) was 91.1%, the turnover of receivables (Indicator 2) was 1.3%, the percent declared uncollectible (Indicator 3) was 0.6%, and..."
+    },
+    {
+      "doc": "CIM.txt",
+      "page": 1,
+      "metric": "Revenue FY2024",
+      "quote": "Revenue FY2024: $52.9M"
+    },
+    {
+      "doc": "CIM.txt",
+      "page": 1,
+      "metric": "Revenue FY2023",
+      "quote": "Revenue FY2023: $38.1M"
+    },
+    {
+      "doc": "CIM.txt",
+      "page": 1,
+      "metric": "Gross margin FY2024",
+      "quote": "Gross margin FY2024: 58%"
+    },
+    {
+      "doc": "CIM.txt",
+      "page": 1,
+      "metric": "EBITDA FY2024",
+      "quote": "EBITDA FY2024: $6.2M"
+    },
+    {
+      "doc": "CIM.txt",
+      "page": 1,
+      "metric": "ARR exiting FY2024",
+      "quote": "ARR exiting FY2024: $41.0M"
+    },
+    {
+      "doc": "sample.pdf",
+      "page": 16,
+      "metric": "Key Risks & Diligence Findings \u00b7 c3 [supported]",
+      "claim_id": "c3",
+      "claim_text": "Successor instructions in the operating manual did not spell out current investigative fact-finding requirements.",
+      "claim_status": "supported",
+      "evidence_id": "e5",
+      "quote": "atic review of\ncompleted Successor Determination work.\nThe Successor Determination Acceptance Sample passed 58 of the 60cases. (There is \"reasonable assurance of accuracy\" if two or fewer\nsamples fail..."
+    },
+    {
+      "doc": "sample.pdf",
+      "page": 16,
+      "metric": "Key Risks & Diligence Findings \u00b7 c4 [supported]",
+      "claim_id": "c4",
+      "claim_text": "There is no back-up training for employees in the Successor area.",
+      "claim_status": "supported",
+      "evidence_id": "e5",
+      "quote": "atic review of\ncompleted Successor Determination work.\nThe Successor Determination Acceptance Sample passed 58 of the 60cases. (There is \"reasonable assurance of accuracy\" if two or fewer\nsamples fail..."
+    },
+    {
+      "doc": "sample.pdf",
+      "page": 16,
+      "metric": "Key Risks & Diligence Findings \u00b7 c5 [supported]",
+      "claim_id": "c5",
+      "claim_text": "Documentation is not being recorded properly for Successor Determinations, and two failing cases contained no evidence or documentation that fact-finding investigations had been conducted.",
+      "claim_status": "supported",
+      "evidence_id": "e5",
+      "quote": "atic review of\ncompleted Successor Determination work.\nThe Successor Determination Acceptance Sample passed 58 of the 60cases. (There is \"reasonable assurance of accuracy\" if two or fewer\nsamples fail..."
+    },
+    {
+      "doc": "sample.pdf",
+      "page": 9,
+      "metric": "Key Risks & Diligence Findings \u00b7 c7 [supported]",
+      "claim_id": "c7",
+      "claim_text": "Contributing factors for the Employer Debits/Billings errors were subsequently identified, and actions have been taken to resolve this problem.",
+      "claim_status": "supported",
+      "evidence_id": "e4",
+      "quote": "hese areas validated the\neffectiveness of those controls.\nThe Systems Review conducted for Employer Debits/Billings alsoIf an inconsistency exists revealed no risks, and indicated that all internal co..."
     }
   ]
 }

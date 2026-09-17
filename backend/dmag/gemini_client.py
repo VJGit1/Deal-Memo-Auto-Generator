@@ -7,9 +7,12 @@ so rate limits and transient errors are handled consistently.
 
 from __future__ import annotations
 
+import json
 import os
 import random
+import socket
 import time
+import urllib.request
 from collections.abc import Callable
 from typing import Any, TypeVar
 
@@ -21,6 +24,60 @@ from .config import EMBED_MAX_RETRIES, GEMINI_MAX_RETRIES, GEMINI_MODEL
 logger = structlog.get_logger(__name__)
 
 T = TypeVar("T")
+
+# ---------------------------------------------------------------------------
+# DNS Fallback (fixes networks like campus Wi-Fi blocking generativelanguage.googleapis.com)
+# ---------------------------------------------------------------------------
+_ORIGINAL_GETADDRINFO = socket.getaddrinfo
+_DNS_CACHE: dict[str, list[str]] = {}
+
+
+def _resolve_doh(hostname: str) -> list[str]:
+    if hostname in _DNS_CACHE:
+        return _DNS_CACHE[hostname]
+    fallback_ips = {
+        "generativelanguage.googleapis.com": [
+            "172.217.116.4",
+            "172.217.115.4",
+            "172.217.114.4",
+            "172.217.113.4",
+            "172.217.119.4",
+        ]
+    }
+    try:
+        url = f"https://cloudflare-dns.com/dns-query?name={hostname}&type=A"
+        req = urllib.request.Request(
+            url,
+            headers={"Accept": "application/dns-json", "User-Agent": "curl/8.0"},
+        )
+        with urllib.request.urlopen(req, timeout=3) as resp:
+            data = json.loads(resp.read().decode())
+            ips = [ans["data"] for ans in data.get("Answer", []) if ans.get("type") == 1]
+            if ips:
+                _DNS_CACHE[hostname] = ips
+                return ips
+    except Exception:
+        pass
+    return fallback_ips.get(hostname, [])
+
+
+def _custom_getaddrinfo(host, port, family=0, type=0, proto=0, flags=0):
+    try:
+        return _ORIGINAL_GETADDRINFO(host, port, family, type, proto, flags)
+    except socket.gaierror:
+        ips = _resolve_doh(str(host))
+        if ips:
+            for ip in ips:
+                try:
+                    return _ORIGINAL_GETADDRINFO(ip, port, family, type, proto, flags)
+                except Exception:
+                    continue
+        raise
+
+
+if socket.getaddrinfo is not _custom_getaddrinfo:
+    socket.getaddrinfo = _custom_getaddrinfo
+
 
 
 def is_retryable(exc: BaseException) -> bool:

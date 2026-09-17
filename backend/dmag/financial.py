@@ -51,6 +51,7 @@ class FinancialExtractor:
     def __init__(self, client, model: str = GEMINI_MODEL):
         self.client = client
         self.model = model
+        self.company_name: str = ""
 
     def extract(self, text: str, doc_name: str) -> list[FinancialEvidence]:
         time.sleep(API_DELAY_SEC)
@@ -96,6 +97,9 @@ class FinancialExtractor:
     def _parse_response(self, raw: str, doc_name: str) -> list[FinancialEvidence]:
         data = json.loads(raw or "{}")
         result_model = MetricExtractionResult.model_validate(data)
+        if result_model.company_name and result_model.company_name.lower() not in ("...", "unknown", "none"):
+            if not self.company_name:
+                self.company_name = result_model.company_name.strip()
         out: list[FinancialEvidence] = []
         for ev in result_model.financial_evidence:
             out.append(
